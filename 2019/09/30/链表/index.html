@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>链表 | 小胖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="C++">
+  
+  
+  
+  
+  <meta name="description" content="用来自己学习用嘎 头文件和结构1234567891011121314151617181920212223/////  main.cpp//  helloworld////  Created by ljr on 2019/9/29.//  Copyright © 2019 ljr. All rights reserved.//#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;s">
+<meta name="keywords" content="C++">
+<meta property="og:type" content="article">
+<meta property="og:title" content="链表">
+<meta property="og:url" content="http://yoursite.com/2019/09/30/链表/index.html">
+<meta property="og:site_name" content="小胖">
+<meta property="og:description" content="用来自己学习用嘎 头文件和结构1234567891011121314151617181920212223/////  main.cpp//  helloworld////  Created by ljr on 2019/9/29.//  Copyright © 2019 ljr. All rights reserved.//#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;s">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-11T09:49:30.898Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="链表">
+<meta name="twitter:description" content="用来自己学习用嘎 头文件和结构1234567891011121314151617181920212223/////  main.cpp//  helloworld////  Created by ljr on 2019/9/29.//  Copyright © 2019 ljr. All rights reserved.//#include&amp;lt;stdlib.h&amp;gt;#include&amp;lt;s">
+  
+    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-链表" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      链表
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/09/30/链表/" class="article-date">
+	  <time datetime="2019-09-30T09:48:59.000Z" itemprop="datePublished">2019-09-30</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/study/">study</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用来自己学习用嘎</p>
+<h2 id="头文件和结构"><a href="#头文件和结构" class="headerlink" title="头文件和结构"></a>头文件和结构</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  helloworld</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by ljr on 2019/9/29.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 ljr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">link</span>;</span>   <span class="comment">//代表链表指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> <span class="title">Lnode</span>;</span>      <span class="comment">// 代表链表节点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span>&#123;</span></span><br><span class="line">    ElemType data;      <span class="comment">//创一个整型为例子8</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建链表函数"><a href="#创建链表函数" class="headerlink" title="创建链表函数"></a>创建链表函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建链表</span></span><br><span class="line"><span class="function">link <span class="title">create</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    ElemType newData;</span><br><span class="line">    link NewPoint;</span><br><span class="line">    Head = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"please input number: \n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;newData);</span><br><span class="line">    Head -&gt; data = newData;</span><br><span class="line">    Head -&gt; next = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        NewPoint = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">        <span class="keyword">if</span>(NewPoint == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"please input number: input '-1' means exit\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;newData);</span><br><span class="line">        <span class="keyword">if</span> (newData == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> Head;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        NewPoint -&gt; data = newData;</span><br><span class="line">        NewPoint -&gt; next = Head;</span><br><span class="line">        Head = NewPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="显示链表"><a href="#显示链表" class="headerlink" title="显示链表"></a>显示链表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//显示链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\nList is empty"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, p -&gt; data);</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">        &#125;<span class="keyword">while</span>(p != <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入节点、删除节点、获取节点、查找节点。"><a href="#插入节点、删除节点、获取节点、查找节点。" class="headerlink" title="插入节点、删除节点、获取节点、查找节点。"></a>插入节点、删除节点、获取节点、查找节点。</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//节点插入</span></span><br><span class="line"><span class="function">link <span class="title">insert</span><span class="params">(link Head,ElemType x,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    link NewPoint,p = Head;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">    NewPoint = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">    NewPoint -&gt; data = x;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">        NewPoint -&gt; next = Head;</span><br><span class="line">        Head = NewPoint;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; i<span class="number">-1</span> &amp;&amp; p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j == i<span class="number">-1</span>) &#123;</span><br><span class="line">        NewPoint -&gt; next = p -&gt; next;</span><br><span class="line">        p -&gt; next = NewPoint;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"insert is failure,i si not right"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除节点</span></span><br><span class="line"><span class="function">link <span class="title">del</span><span class="params">(link Head,<span class="keyword">int</span> i )</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">1</span>; link p,t; p = Head;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">        p = p -&gt; next; <span class="built_in">free</span>(Head); Head = p;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; i<span class="number">-1</span> &amp;&amp; p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;<span class="keyword">if</span>(p -&gt; next != <span class="literal">NULL</span> &amp;&amp; j == i<span class="number">-1</span>)&#123;</span><br><span class="line">            t = p -&gt; next;</span><br><span class="line">            p -&gt; next = t -&gt; next;</span><br><span class="line">        &#125;<span class="keyword">if</span>(t != <span class="literal">NULL</span>)</span><br><span class="line">            <span class="built_in">free</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取节点元素value</span></span><br><span class="line"><span class="function">ElemType <span class="title">get</span><span class="params">(link Head,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; p != <span class="literal">NULL</span> ) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (p -&gt; data);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"data is error!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找节点元素x的位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">locate</span><span class="params">(link Head, ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>; link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; p -&gt; data != x) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="链表逆置"><a href="#链表逆置" class="headerlink" title="链表逆置"></a>链表逆置</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//链表逆置</span></span><br><span class="line"><span class="function">link <span class="title">re</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p = Head;</span><br><span class="line">    link n = <span class="literal">NULL</span>,temp;  <span class="comment">//n为保存的临时第一个链表节点，temp为第二个临时节点</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(p -&gt; next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> Head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        temp = p;           <span class="comment">//  设置临时变量等于头节点</span></span><br><span class="line">        p = p -&gt; next;      <span class="comment">//  让p = p的下一个节点</span></span><br><span class="line">        temp -&gt; next = n;   <span class="comment">//  让p的下一个节点指向n   n第一次是NULL   后面将会等于临时变量temp</span></span><br><span class="line">        n = temp;           <span class="comment">//  让n = 要逆转的节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="其它功能"><a href="#其它功能" class="headerlink" title="其它功能"></a>其它功能</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回链表的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lenth</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>; link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        len++;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链接两个链表</span></span><br><span class="line"><span class="function">link <span class="title">connect</span><span class="params">(link Head1,link Head2)</span></span>&#123;</span><br><span class="line">    link p; p = Head1;</span><br><span class="line">    <span class="keyword">while</span> (p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">    p -&gt; next = Head2;</span><br><span class="line">    <span class="keyword">return</span> Head1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//比较两个链表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(link Head1,link Head2)</span></span>&#123;</span><br><span class="line">    link p1,p2; p1 = Head1; p2 = Head2;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>((p1 -&gt; next == <span class="literal">NULL</span>)&amp;&amp;(p2 -&gt; next == <span class="literal">NULL</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (p1 -&gt; data != p2 -&gt; data) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            p1 = p1 -&gt; next;</span><br><span class="line">            p2 = p2 -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//释放链表</span></span><br><span class="line"><span class="function">link <span class="title">setnull</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        <span class="built_in">free</span>(Head);</span><br><span class="line">        Head = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="main函数"><a href="#main函数" class="headerlink" title="main函数"></a>main函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">    link head1 = <span class="literal">NULL</span>;</span><br><span class="line">    link head2 = <span class="literal">NULL</span>;</span><br><span class="line">    head1 = create(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead1 is\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head2 = create(head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead2 is\n"</span>);</span><br><span class="line">    display(head2);</span><br><span class="line">    </span><br><span class="line">    l = compare(head1, head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nl is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    connect(head1, head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead1 + Head2 is\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    l = lenth(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nlenth is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    l = get(head1,<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nget is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    l = locate(head1, <span class="number">12</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n locate 12 is %d"</span>,l);</span><br><span class="line">    </span><br><span class="line">    head1 = insert(head1, <span class="number">888</span>, <span class="number">5</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head1 = del(head1, <span class="number">5</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置前kk---------------\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置后kk---------------\n"</span>);</span><br><span class="line">    head1 = re(head1);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head1 = setnull(head1);</span><br><span class="line">    display(head1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="完整代码可直接copy"><a href="#完整代码可直接copy" class="headerlink" title="完整代码可直接copy"></a>完整代码可直接copy</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">//  main.cpp</span></span><br><span class="line"><span class="comment">//  helloworld</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by ljr on 2019/9/29.</span></span><br><span class="line"><span class="comment">//  Copyright © 2019 ljr. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">link</span>;</span>   <span class="comment">//代表链表指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> <span class="title">Lnode</span>;</span>      <span class="comment">// 代表链表节点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span>&#123;</span></span><br><span class="line">    ElemType data;      <span class="comment">//创一个整型为例子8</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建链表</span></span><br><span class="line"><span class="function">link <span class="title">create</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    ElemType newData;</span><br><span class="line">    link NewPoint;</span><br><span class="line">    Head = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"please input number: \n"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;newData);</span><br><span class="line">    Head -&gt; data = newData;</span><br><span class="line">    Head -&gt; next = <span class="literal">NULL</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">        NewPoint = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">        <span class="keyword">if</span>(NewPoint == <span class="literal">NULL</span>)</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"please input number: input '-1' means exit\n"</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;newData);</span><br><span class="line">        <span class="keyword">if</span> (newData == <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> Head;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        NewPoint -&gt; data = newData;</span><br><span class="line">        NewPoint -&gt; next = Head;</span><br><span class="line">        Head = NewPoint;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//显示链表</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\nList is empty"</span>);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, p -&gt; data);</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">        &#125;<span class="keyword">while</span>(p != <span class="literal">NULL</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//节点插入</span></span><br><span class="line"><span class="function">link <span class="title">insert</span><span class="params">(link Head,ElemType x,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    link NewPoint,p = Head;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">    NewPoint = (link)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Lnode));</span><br><span class="line">    NewPoint -&gt; data = x;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">        NewPoint -&gt; next = Head;</span><br><span class="line">        Head = NewPoint;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; i<span class="number">-1</span> &amp;&amp; p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (j == i<span class="number">-1</span>) &#123;</span><br><span class="line">        NewPoint -&gt; next = p -&gt; next;</span><br><span class="line">        p -&gt; next = NewPoint;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"insert is failure,i si not right"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除节点</span></span><br><span class="line"><span class="function">link <span class="title">del</span><span class="params">(link Head,<span class="keyword">int</span> i )</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j=<span class="number">1</span>; link p,t; p = Head;</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>)&#123;</span><br><span class="line">        p = p -&gt; next; <span class="built_in">free</span>(Head); Head = p;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; i<span class="number">-1</span> &amp;&amp; p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            p = p -&gt; next;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;<span class="keyword">if</span>(p -&gt; next != <span class="literal">NULL</span> &amp;&amp; j == i<span class="number">-1</span>)&#123;</span><br><span class="line">            t = p -&gt; next;</span><br><span class="line">            p -&gt; next = t -&gt; next;</span><br><span class="line">        &#125;<span class="keyword">if</span>(t != <span class="literal">NULL</span>)</span><br><span class="line">            <span class="built_in">free</span>(t);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取节点元素value</span></span><br><span class="line"><span class="function">ElemType <span class="title">get</span><span class="params">(link Head,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">1</span>;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (j &lt; i &amp;&amp; p != <span class="literal">NULL</span> ) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (p -&gt; data);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"data is error!"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查找节点元素x的位置</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">locate</span><span class="params">(link Head, ElemType x)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = <span class="number">0</span>; link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span> &amp;&amp; p -&gt; data != x) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        n++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> n+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回链表的长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lenth</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">0</span>; link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span>(p != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        len++;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链接两个链表</span></span><br><span class="line"><span class="function">link <span class="title">connect</span><span class="params">(link Head1,link Head2)</span></span>&#123;</span><br><span class="line">    link p; p = Head1;</span><br><span class="line">    <span class="keyword">while</span> (p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">    &#125;</span><br><span class="line">    p -&gt; next = Head2;</span><br><span class="line">    <span class="keyword">return</span> Head1;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//比较两个链表</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(link Head1,link Head2)</span></span>&#123;</span><br><span class="line">    link p1,p2; p1 = Head1; p2 = Head2;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>((p1 -&gt; next == <span class="literal">NULL</span>)&amp;&amp;(p2 -&gt; next == <span class="literal">NULL</span>))</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (p1 -&gt; data != p2 -&gt; data) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            p1 = p1 -&gt; next;</span><br><span class="line">            p2 = p2 -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//释放链表</span></span><br><span class="line"><span class="function">link <span class="title">setnull</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p; p = Head;</span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        p = p -&gt; next;</span><br><span class="line">        <span class="built_in">free</span>(Head);</span><br><span class="line">        Head = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//链表逆置</span></span><br><span class="line"><span class="function">link <span class="title">re</span><span class="params">(link Head)</span></span>&#123;</span><br><span class="line">    link p = Head;</span><br><span class="line">    link n = <span class="literal">NULL</span>,temp;  <span class="comment">//n为保存的临时第一个链表节点，temp为第二个临时节点</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(p -&gt; next == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> Head;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</span><br><span class="line">        temp = p;           <span class="comment">//  设置临时变量等于头节点</span></span><br><span class="line">        p = p -&gt; next;      <span class="comment">//  让p = p的下一个节点</span></span><br><span class="line">        temp -&gt; next = n;   <span class="comment">//  让p的下一个节点指向n   n第一次是NULL   后面将会等于临时变量temp</span></span><br><span class="line">        n = temp;           <span class="comment">//  让n = 要逆转的节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">    link head1 = <span class="literal">NULL</span>;</span><br><span class="line">    link head2 = <span class="literal">NULL</span>;</span><br><span class="line">    head1 = create(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead1 is\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head2 = create(head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead2 is\n"</span>);</span><br><span class="line">    display(head2);</span><br><span class="line">    </span><br><span class="line">    l = compare(head1, head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nl is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    connect(head1, head2);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead1 + Head2 is\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    l = lenth(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nlenth is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    l = get(head1,<span class="number">3</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nget is %d\n"</span>,l);</span><br><span class="line">    </span><br><span class="line">    l = locate(head1, <span class="number">12</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n locate 12 is %d"</span>,l);</span><br><span class="line">    </span><br><span class="line">    head1 = insert(head1, <span class="number">888</span>, <span class="number">5</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head1 = del(head1, <span class="number">5</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置前kk---------------\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置后kk---------------\n"</span>);</span><br><span class="line">    head1 = re(head1);</span><br><span class="line">    display(head1);</span><br><span class="line">    </span><br><span class="line">    head1 = setnull(head1);</span><br><span class="line">    display(head1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2019-10-09-增加递归逆置链表；"><a href="#2019-10-09-增加递归逆置链表；" class="headerlink" title="2019.10.09 增加递归逆置链表；"></a>2019.10.09 增加递归逆置链表；</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//测试代码如下</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> ElemType;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">link</span>;</span>   <span class="comment">//代表链表指针</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">List</span> <span class="title">Lnode</span>;</span>      <span class="comment">// 代表链表节点</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//结构</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">List</span>&#123;</span></span><br><span class="line">    ElemType data;      <span class="comment">//创一个整型为例子8</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">List</span> * <span class="title">next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">List * <span class="title">reverseList</span><span class="params">(List * Head)</span></span>&#123;</span><br><span class="line">    <span class="comment">//如果链表为空或者链表中只有一个元素</span></span><br><span class="line">    <span class="keyword">if</span> (Head -&gt; next == <span class="literal">NULL</span> || Head == <span class="literal">NULL</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> Head;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        List * newHead = reverseList(Head -&gt; next);   <span class="comment">//先反转后面的链表</span></span><br><span class="line">        Head -&gt; next -&gt; next = Head;  <span class="comment">//再将当前节点设置为其然来后面节点的后续节点</span></span><br><span class="line">        Head -&gt; next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    link head1 = <span class="literal">NULL</span>;</span><br><span class="line">    head1 = create(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\nHead1 is\n"</span>);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置前kk---------------\n"</span>);</span><br><span class="line">    display(head1);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"-------------逆置后kk---------------\n"</span>);</span><br><span class="line">    head1 = reverseList(head1);</span><br><span class="line">    display(head1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/09/30/链表/" target="_blank" title="链表">http://yoursite.com/2019/09/30/链表/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/10/11/栈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          栈
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/29/git/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">git</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#头文件和结构"><span class="nav-number">1.</span> <span class="nav-text">头文件和结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建链表函数"><span class="nav-number">2.</span> <span class="nav-text">创建链表函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示链表"><span class="nav-number">3.</span> <span class="nav-text">显示链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入节点、删除节点、获取节点、查找节点。"><span class="nav-number">4.</span> <span class="nav-text">插入节点、删除节点、获取节点、查找节点。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表逆置"><span class="nav-number">5.</span> <span class="nav-text">链表逆置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它功能"><span class="nav-number">6.</span> <span class="nav-text">其它功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#main函数"><span class="nav-number">7.</span> <span class="nav-text">main函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#完整代码可直接copy"><span class="nav-number">8.</span> <span class="nav-text">完整代码可直接copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2019-10-09-增加递归逆置链表；"><span class="nav-number">9.</span> <span class="nav-text">2019.10.09 增加递归逆置链表；</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 小胖 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            小胖
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jr&#39;Blog All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

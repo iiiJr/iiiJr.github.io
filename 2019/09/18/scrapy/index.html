@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>scrapy | 小胖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="python">
+  
+  
+  
+  
+  <meta name="description" content="Scrapy框架的安装先pip install wheel,在去 1https://www.lfd.uci.edu/~gohlke/pythonlibs/  下载 1lxml‑4.3.4‑cp36‑cp36m‑win_amd64.whll  注意根据型号什么的下载，然后再 1pip install 下载的文件地址  然后再去 1https://pypi.org/project/pyOpenSSL/">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy">
+<meta property="og:url" content="http://yoursite.com/2019/09/18/scrapy/index.html">
+<meta property="og:site_name" content="小胖">
+<meta property="og:description" content="Scrapy框架的安装先pip install wheel,在去 1https://www.lfd.uci.edu/~gohlke/pythonlibs/  下载 1lxml‑4.3.4‑cp36‑cp36m‑win_amd64.whll  注意根据型号什么的下载，然后再 1pip install 下载的文件地址  然后再去 1https://pypi.org/project/pyOpenSSL/">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-11T09:40:33.537Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scrapy">
+<meta name="twitter:description" content="Scrapy框架的安装先pip install wheel,在去 1https://www.lfd.uci.edu/~gohlke/pythonlibs/  下载 1lxml‑4.3.4‑cp36‑cp36m‑win_amd64.whll  注意根据型号什么的下载，然后再 1pip install 下载的文件地址  然后再去 1https://pypi.org/project/pyOpenSSL/">
+  
+    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-scrapy" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      scrapy
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/09/18/scrapy/" class="article-date">
+	  <time datetime="2019-09-18T09:38:44.000Z" itemprop="datePublished">2019-09-18</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/study/">study</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Scrapy框架的安装"><a href="#Scrapy框架的安装" class="headerlink" title="Scrapy框架的安装"></a>Scrapy框架的安装</h2><p>先pip install wheel,在去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.lfd.uci.edu/~gohlke/pythonlibs/</span><br></pre></td></tr></table></figure>
+
+<p>下载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lxml‑<span class="number">4.3</span><span class="number">.4</span>‑cp36‑cp36m‑win_amd64.whll</span><br></pre></td></tr></table></figure>
+
+<p>注意根据型号什么的下载，然后再</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install 下载的文件地址</span><br></pre></td></tr></table></figure>
+
+<p>然后再去</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://pypi.org/project/pyOpenSSL/<span class="comment">#downloads</span></span><br></pre></td></tr></table></figure>
+
+<p>下载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyOpenSSL<span class="number">-19.0</span><span class="number">.0</span>-py2.py3-none-any.whl</span><br></pre></td></tr></table></figure>
+
+<p>继续</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.lfd.uci.edu/~gohlke/pythonlibs/</span><br></pre></td></tr></table></figure>
+
+<p>下载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">twain‑<span class="number">1.0</span><span class="number">.4</span>‑cp36‑cp36m‑win_amd64.whl</span><br></pre></td></tr></table></figure>
+
+<p>继续</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://sourceforge.net/projects/pywin32/files/pywin32/Build%<span class="number">20221</span>/</span><br></pre></td></tr></table></figure>
+
+<p>下载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pywin32<span class="number">-221.</span>win-AMD64-py3<span class="number">.6</span>.exe </span><br><span class="line">(这个我没找到最后用pip install pywin32成功安装的溜了溜了。)</span><br></pre></td></tr></table></figure>
+
+<p>遇到了各种问题，我累了，懒得一一列出来</p>
+<h2 id="scrapy调试工具"><a href="#scrapy调试工具" class="headerlink" title="scrapy调试工具"></a>scrapy调试工具</h2><p>命令行中输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell http://lab.scrapyd.cn</span><br></pre></td></tr></table></figure>
+
+<p>scrapy shell 固定格式，后面的话跟的是你要调试的页面，如果是百度就：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell (http://www.baidu.com)(URL可改变)</span><br></pre></td></tr></table></figure>
+
+<p>就这样一个格式，其实这段代码就是一个下载的过程，一执行这么一段代码scrapy就立马把我们相应链接的相应页面给拿到了，那接下来就可以任你处置了。</p>
+<p>在要提前的调试界面In中输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(<span class="string">'title'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>之类的语句就可以自动调试了</p>
+<h2 id="scrapy框架的基本使用"><a href="#scrapy框架的基本使用" class="headerlink" title="scrapy框架的基本使用"></a>scrapy框架的基本使用</h2><p>在需要创建的目录下打开cmd</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">然后输入 scrapy startproject /项目名称/.</span><br></pre></td></tr></table></figure>
+
+<p>在输入需要爬取的URL<br>进入创建的目录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">输入 scrapy genspider quotes /URL/.</span><br></pre></td></tr></table></figure>
+
+<p>这里也可以手动创建一个python文件，同理:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">import scrapy</span><br><span class="line"></span><br><span class="line">class mingyan(scrapy.Spider): <span class="comment">#需要继承scrapy.Spider类</span></span><br><span class="line">    </span><br><span class="line">name = <span class="string">"mingyan2"</span> <span class="comment"># 定义蜘蛛名</span></span><br><span class="line"></span><br><span class="line">    def start_requests(self): <span class="comment"># 由此方法通过下面链接爬取页面</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义爬取的链接</span></span><br><span class="line">        urls = [</span><br><span class="line">            <span class="string">'http://lab.scrapyd.cn/page/1/'</span>,</span><br><span class="line">            <span class="string">'http://lab.scrapyd.cn/page/2/'</span>,</span><br><span class="line">        ]</span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            yield scrapy.Request(url=url, callback=self.parse) <span class="comment">#爬取到的页面如何处理？提交给parse方法处理</span></span><br><span class="line"></span><br><span class="line">    def parse(self, response):</span><br><span class="line"></span><br><span class="line">        <span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">        start_requests已经爬取到页面，那如何提取我们想要的内容呢？那就可以在这个方法里面定义。</span></span><br><span class="line"><span class="string">        这里的话，并木有定义，只是简单的把页面做了一个保存，并没有涉及提取我们想要的数据，后面会慢慢说到</span></span><br><span class="line"><span class="string">        也就是用xpath、正则、或是css进行相应提取，这个例子就是让你看看scrapy运行的流程：</span></span><br><span class="line"><span class="string">        1、定义链接；</span></span><br><span class="line"><span class="string">        2、通过链接爬取（下载）页面；</span></span><br><span class="line"><span class="string">        3、定义规则，然后提取数据；</span></span><br><span class="line"><span class="string">        就是这么个流程，4不4很简单呀？</span></span><br><span class="line"><span class="string">        '</span><span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        page = response.url.split(<span class="string">"/"</span>)[-2]     <span class="comment">#根据上面的链接提取分页,如：/page/1/，提取到的就是：1</span></span><br><span class="line">        filename = <span class="string">'mingyan-%s.html'</span> % page    <span class="comment">#拼接文件名，如果是第一页，最终文件名便是：mingyan-1.html</span></span><br><span class="line">        with open(filename, <span class="string">'wb'</span>) as f:        <span class="comment">#python文件操作，不多说了；</span></span><br><span class="line">            f.write(response.body)             <span class="comment">#刚才下载的页面去哪里了？response.body就代表了刚才下载的页面！</span></span><br><span class="line">        self.log(<span class="string">'保存文件: %s'</span> % filename)      <span class="comment"># 打个日志</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="scrapy-css选择器的使用"><a href="#scrapy-css选择器的使用" class="headerlink" title="scrapy css选择器的使用"></a>scrapy css选择器的使用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入response.css(<span class="string">'title'</span>)</span><br><span class="line">可以得到[&lt;Selector xpath=<span class="string">'descendant-or-self::title'</span> data=<span class="string">'&lt;title&gt;xxxxxxxxxxxxxxxxx&lt;/title&gt;'</span>&gt;]类似的东西</span><br></pre></td></tr></table></figure>
+
+<p>如果你加上</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">response.css(<span class="string">'title'</span>).extract()这个</span><br><span class="line">他就会变成[<span class="string">'&lt;title&gt;xxxxxxxxxxx&lt;/title&gt;'</span>]列表的形式，如果不需要列表可以这样。</span><br><span class="line"></span><br><span class="line">response.css(<span class="string">'title'</span>).extract_first()，那么爬下来的数据为这样</span><br><span class="line"> <span class="string">'&lt;title&gt;xxxxxxxxxxx&lt;/title&gt;'</span></span><br><span class="line"> </span><br><span class="line"> extract_first()就代表提取第一个元素（我想这个谁都看得出来）</span><br><span class="line"> 当然如果你觉得怎么多了个title标签  那你可以这样：</span><br><span class="line"> response.css(<span class="string">'title::text'</span>).extract_first()</span><br><span class="line"> </span><br><span class="line"> 这样爬下来的数据就是xxxxxxxxxxx了</span><br></pre></td></tr></table></figure>
+
+<p>我们该如何提取URL呢？提取属性我们是用：“标签名::attr(属性名)”，比如我们要提取url表达式就是：a::attr(href)，要提取图片地址的表达式就是：img::attr(src)……以此类推：<br>获取所有a标签下的所以href</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(<span class="string">"a::attr(href)"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>获取固定class样式下的标签</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(<span class="string">".page-navigator a::attr(href)"</span>).extract()</span><br></pre></td></tr></table></figure>
+
+<p>如果是src那就要这样写</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.css(<span class="string">".xxxx img::attr(src)"</span>).extract()</span><br></pre></td></tr></table></figure>
+
+<p>还有好多,自己发挥。</p>
+<h2 id="xpath提取数据"><a href="#xpath提取数据" class="headerlink" title="xpath提取数据"></a>xpath提取数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">nodename  =   选取此节点的所有子节点。</span><br><span class="line">/         =   从根节点选取。</span><br><span class="line">//        =   从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置。</span><br><span class="line">.         =   选取当前节点。</span><br><span class="line">..        =   选取当前节点的父节点。</span><br><span class="line">@         =   选取属性。</span><br></pre></td></tr></table></figure>
+
+<p>response.xpath(“表达式”)，提取属性的话既然使用：@，那我们要提取href就是：@href</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In: response.xpath(<span class="string">"@href"</span>)</span><br><span class="line">out: []</span><br></pre></td></tr></table></figure>
+
+<p>可以看到输出为0,因为我们木有限定从哪里提取,一般我们都需要加个：//，再来试试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In: response.xpath(<span class="string">"//@href"</span>)</span><br><span class="line">out: </span><br><span class="line">[&lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'//cdnjscn.b0.upaiyun.com/libs/normalize/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/usr/themes/default'</span>&gt;,</span><br><span class="line"> ……</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/tag/%E7%8E%8B%E5%B'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/tag/%E6%99%BA%E6%8'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/tag/%E6%B3%B0%E6%8'</span>&gt;,</span><br><span class="line">……</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/tag/%E8%AF%8D/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://bbs.scrapyd.cn'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://www.scrapyd.cn'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/'</span>&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>已经提取到了，只是这是这个页面所有的href，并非是我们想要的，那和css选择一样我们需要加以限制.例如一个ol标签下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In: response.xpath(<span class="string">"//ol//@href"</span>)</span><br><span class="line"></span><br><span class="line">Out:</span><br><span class="line">[&lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/1/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/2/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/3/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/4/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/6/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">'//ol//@href'</span> data=<span class="string">'http://lab.scrapyd.cn/page/2/'</span>&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>“//ol//@href”，这个表达式表示：ol标签下所有的href属性值，可以看到我们这里限定了html的ol标签，这里的话页面只有一个ol，不会出错，如果页面中有多个ol，那就不一定能得到我们想要的结果,<br>这里我们还能限定我们的属性，使用的是：标签[@属性名=’属性值’]； 例如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol class=<span class="string">"page-navigator"</span>&gt;</span><br><span class="line">  ……</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p>里面有个：class=“page-navigator”，那我们就可以这样限制：//ol[@class=”page-navigator”]//@href 好了，这样的话就能让ol尽量缩小范围，我们再来试试这个代码效果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">In : response.xpath(<span class="string">"//ol[@class='page-navigator']//@href"</span>)</span><br><span class="line">Out:</span><br><span class="line">[&lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/1/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/2/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/3/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/4/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/6/'</span>&gt;,</span><br><span class="line"> &lt;Selector xpath=<span class="string">"//ol[@class='page-navigator']//@href"</span> data=<span class="string">'http://lab.scrapyd</span></span><br><span class="line"><span class="string">.cn/page/2/'</span>&gt;]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到也是同样得到想要的效果，以此类推，可以根据自己的情况来缩小范围<br>如果这里的属性是id那就：ol[@id=’page-navigator’]<br>和css选择器一样，xpath中也有extract（）、extract_first()这两个函数，加上就可以提取纯粹的href值了</p>
+<p>——————————–分割</p>
+<p>接下来我们提取标签里面的内容，表达式： //text()，其实就是提取文本（不想说了，放个例子你们会懂得）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In : response.xpath(<span class="string">"//title//text()"</span>).extract()</span><br><span class="line">Out: [<span class="string">'xxxxxxxxxxx'</span>]</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，表达式为：//title//text() ，就是用到了：//text() 这个表达式，前面的：//title是限定你要提取的范围，同理如果你要提取首页右侧的标签，如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=<span class="string">"tags-list"</span>&gt;</span><br><span class="line">        &lt;li&gt;&lt;a style=<span class="string">"color:rgb(101,86,</span></span><br><span class="line"><span class="string">           72)"</span> href=<span class="string">"http://lab.scrapyd.cn/tag/%E4%BA%BA%E7%94%9F/"</span>&gt;</span><br><span class="line">         人生&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a style=<span class="string">"color:rgb(214,236,</span></span><br><span class="line"><span class="string">           5)"</span> href=<span class="string">"http://lab.scrapyd.cn/tag/%E5%8A%B1%E5%BF%97/"</span>&gt;</span><br><span class="line">         励志&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">         ……</span><br><span class="line">        &lt;li&gt;&lt;a style=<span class="string">"color:rgb(4,4,</span></span><br><span class="line"><span class="string">           41)"</span> href=<span class="string">"http://lab.scrapyd.cn/tag/%E7%BB%9D%E4%B8%96%E5%A5%BD%E8%AF%8D/"</span>&gt;</span><br><span class="line">         绝世好词&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;a style=<span class="string">"color:rgb(204,12,</span></span><br><span class="line"><span class="string">           225)"</span> href=<span class="string">"http://lab.scrapyd.cn/tag/%E6%9C%A8%E5%BF%83/"</span>&gt;</span><br><span class="line">         木心&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">        ……</span><br><span class="line">     	&lt;li&gt;&lt;a href=<span class="string">"http://lab.scrapyd.cn"</span>&gt;返回首页&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;li&gt;&lt;a href=<span class="string">"http://bbs.scrapyd.cn"</span> target=<span class="string">"_blank"</span>&gt;SCRAPY中文社区&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;&lt;a href=<span class="string">"http://www.scrapyd.cn"</span> target=<span class="string">"_blank"</span>&gt;SCRAPY中文网&lt;/a&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到标签文字是在 “class=tags-list” 的ul里面，那我们就可以这样写表达式：//ul[@class=’tags-list’]//a//text()，具体代码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">In [5]: response.xpath(<span class="string">"//ul[@class='tags-list']//a//text()"</span>).extract()</span><br><span class="line">Out[5]:</span><br><span class="line">[<span class="string">'\r\n         人生'</span>,</span><br><span class="line"> <span class="string">'\r\n         励志'</span>,</span><br><span class="line"> <span class="string">'\r\n         爱情'</span>,</span><br><span class="line"> <span class="string">'\r\n         王尔德'</span>,</span><br><span class="line"> <span class="string">'\r\n         智慧'</span>,</span><br><span class="line"> <span class="string">'\r\n         泰戈尔'</span>,</span><br><span class="line"> <span class="string">'\r\n         绝世好词'</span>,</span><br><span class="line"> <span class="string">'\r\n         木心'</span>,</span><br><span class="line"> <span class="string">'\r\n         艺术'</span>,</span><br><span class="line"> <span class="string">'\r\n         名画'</span>,</span><br><span class="line"> <span class="string">'\r\n         生活'</span>,</span><br><span class="line"> <span class="string">'\r\n         词'</span>,</span><br><span class="line"> <span class="string">'返回首页'</span>,</span><br><span class="line"> <span class="string">'SCRAPY中文社区'</span>,</span><br><span class="line"> <span class="string">'SCRAPY中文网'</span>]</span><br></pre></td></tr></table></figure>
+
+<p> 可以看到经过这样的限制，我们就定位到了；</p>
+<p> ——————–分割线</p>
+<p> 包含HTML标签的所有文字内容提取：string()</p>
+<p>如果我们用表达式：//div[@class=’post-content’]//text()，你会发现虽然能提取但是一个列表，不是整段文字：<br>那这里我们就用到一个xpath函数：string()，我们可以把表达式这样写：response.xpath(“string(//div[@class=’post-content’])”).extract()，可看到我们没有使用：text()，而是用：string(要提取内容的标签)，这样的话就能把数据都提取出来了，而且都合成为一条。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/09/18/scrapy/" target="_blank" title="scrapy">http://yoursite.com/2019/09/18/scrapy/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/19/docker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          docker
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/17/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy框架的安装"><span class="nav-number">1.</span> <span class="nav-text">Scrapy框架的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy调试工具"><span class="nav-number">2.</span> <span class="nav-text">scrapy调试工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy框架的基本使用"><span class="nav-number">3.</span> <span class="nav-text">scrapy框架的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scrapy-css选择器的使用"><span class="nav-number">4.</span> <span class="nav-text">scrapy css选择器的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xpath提取数据"><span class="nav-number">5.</span> <span class="nav-text">xpath提取数据</span></a></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 小胖 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            小胖
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jr&#39;Blog All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

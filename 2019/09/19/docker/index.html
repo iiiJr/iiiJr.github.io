@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>docker | 小胖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="docker">
+  
+  
+  
+  
+  <meta name="description" content="docke的基本使用:容器的创建还有镜像的下载看网址就好：1https://www.runoob.com/docker/docker-install-tomcat.html  常用命令大全： 先了解下基础操作命令 镜像: 应用程序所依赖的操作环境和配置形成的模板，用面向对象的话来说简称类 容器: 通过镜像来运行容器，容器相当于类的实例。 123456789101112131415161718192">
+<meta name="keywords" content="docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="http://yoursite.com/2019/09/19/docker/index.html">
+<meta property="og:site_name" content="小胖">
+<meta property="og:description" content="docke的基本使用:容器的创建还有镜像的下载看网址就好：1https://www.runoob.com/docker/docker-install-tomcat.html  常用命令大全： 先了解下基础操作命令 镜像: 应用程序所依赖的操作环境和配置形成的模板，用面向对象的话来说简称类 容器: 通过镜像来运行容器，容器相当于类的实例。 123456789101112131415161718192">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-11T09:43:56.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker">
+<meta name="twitter:description" content="docke的基本使用:容器的创建还有镜像的下载看网址就好：1https://www.runoob.com/docker/docker-install-tomcat.html  常用命令大全： 先了解下基础操作命令 镜像: 应用程序所依赖的操作环境和配置形成的模板，用面向对象的话来说简称类 容器: 通过镜像来运行容器，容器相当于类的实例。 123456789101112131415161718192">
+  
+    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-docker" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      docker
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/09/19/docker/" class="article-date">
+	  <time datetime="2019-09-19T09:42:48.000Z" itemprop="datePublished">2019-09-19</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/study/">study</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="docke的基本使用-容器的创建还有镜像的下载看网址就好："><a href="#docke的基本使用-容器的创建还有镜像的下载看网址就好：" class="headerlink" title="docke的基本使用:容器的创建还有镜像的下载看网址就好："></a>docke的基本使用:容器的创建还有镜像的下载看网址就好：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.runoob.com/docker/docker-install-tomcat.html</span><br></pre></td></tr></table></figure>
+
+<h2 id="常用命令大全："><a href="#常用命令大全：" class="headerlink" title="常用命令大全："></a>常用命令大全：</h2><p> 先了解下基础操作命令<br> 镜像: 应用程序所依赖的操作环境和配置形成的模板，用面向对象的话来说简称类<br> 容器: 通过镜像来运行容器，容器相当于类的实例。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">ip addr/ip link/ ifconfig：查看宿主机里ip地址（宿主机表示是虚拟机)</span><br><span class="line"></span><br><span class="line">systemctl start docker/service start docker：启动docker服务</span><br><span class="line"></span><br><span class="line">systemctl stop docker:关闭docker服务</span><br><span class="line"></span><br><span class="line">service iptables start:启动防火墙</span><br><span class="line"></span><br><span class="line">service iptables restart:重启防火墙</span><br><span class="line"></span><br><span class="line">service iptables stop:关闭防火墙</span><br><span class="line"></span><br><span class="line">docker run：启动container</span><br><span class="line"></span><br><span class="line">docker seach xxxx(镜像名称):检索镜像</span><br><span class="line"></span><br><span class="line">docker pull xxx(镜像名称）：拉取镜像</span><br><span class="line"></span><br><span class="line">docker images:列出镜像</span><br><span class="line"></span><br><span class="line">docker  --version:查看docker的版本信息</span><br><span class="line"></span><br><span class="line">[root@localhost  ~]:家目录</span><br><span class="line"></span><br><span class="line">[root@localhost  /]:根目录</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> Container Id:进入容器</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it NAMES(自定义名称) /bin/bash:进入--name命名的容器</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> NAMES(容器的自定义名称）-it bash:进入容器里进行操作</span><br><span class="line"></span><br><span class="line">docker attach Container Id:进入到容器的终端</span><br><span class="line"></span><br><span class="line">docker inspect IMAGE ID:显示容器或镜像的元数据</span><br><span class="line"></span><br><span class="line">[root@（container id）]：比如[root@24527d42d3eb]表示已进入docker里的一个CONTAINER ID的容器内部</span><br><span class="line"></span><br><span class="line">[root@24527d42d3eb]:<span class="built_in">exit</span>(从容器里退出）。</span><br><span class="line"></span><br><span class="line">docker ps：查看docker里运行的容器（status为Up....表示运行中）</span><br><span class="line"></span><br><span class="line">docker ps -a:查看docker里已停止或正在运行的容器（status为Exit)</span><br><span class="line"></span><br><span class="line">docker start CONTAINER ID   ：如果容器的状态为Exit,用它来启动容器</span><br><span class="line"></span><br><span class="line">docker stop CONTAINER ID   :停止正在运行的容器，删除一个容器必须先要停止</span><br><span class="line"></span><br><span class="line">docker restart :当部署web项目的war文件，到tomcat里的webapps里面了，重启一下docker服务，就自动解压了war文件</span><br><span class="line"></span><br><span class="line">docker rm CONTAINER ID ：删除容器</span><br><span class="line"></span><br><span class="line">docker rm $(docker ps -a -q)：删除所有已停止的容器;</span><br><span class="line"></span><br><span class="line">docekr rmi IMAGE ID:删除镜像</span><br><span class="line"></span><br><span class="line">rm -rf xxxx：强制删除某个war.文件或目录、文件</span><br><span class="line"></span><br><span class="line">docker cp /xxx.war CONTAINER ID   :/usr/<span class="built_in">local</span>/tomcat/webapps：从/根目录复制一个打包后的Java web war文件 到tomcat容器里的webapps工作目录里</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> CONTAINER ID   ls /usr/<span class="built_in">local</span>/tomcat:默认的 安装tomcat镜像的webapps目录</span><br><span class="line"></span><br><span class="line">docker run -name xxx -p  (自定义端口号,用来访问的):(容器的端口号：比如tomcat的8080，mysql的3306） -d docker.io/tomcat(镜像名称)：表示在docker里运行一个tomcat容器,如果没有镜像，自动pull一个tomcat的镜像</span><br><span class="line"></span><br><span class="line">--name 为容器取一个名字</span><br><span class="line"></span><br><span class="line">-p 容器要映射的端口号</span><br><span class="line"></span><br><span class="line">-d:后台运行</span><br><span class="line"></span><br><span class="line">-t：进入终端</span><br><span class="line"></span><br><span class="line">-i：获得一个交互式的连接，通过获取container的输入</span><br><span class="line"></span><br><span class="line">/bin/bash：在container中启动一个bash shell</span><br></pre></td></tr></table></figure>
+
+<p> 因为我只在docker中建立了tomcat的和mysql两个环境，所以这里就只讲讲tomcat和mysql的创建：</p>
+<h3 id="开始安装tomcat"><a href="#开始安装tomcat" class="headerlink" title="开始安装tomcat"></a>开始安装tomcat</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">输入这条命令</span><br><span class="line">docker run --name tomcat -p 8080:8080 -d tomcat</span><br><span class="line"></span><br><span class="line">在用docker ps查看的时候显示的是</span><br><span class="line">eee4f17b3f78        tomcat              <span class="string">"catalina.sh run"</span>   15 seconds ago      Up 14 seconds       0.0.0.0:8080-&gt;8080/tcp   tomcat</span><br><span class="line"></span><br><span class="line">默认是0.0.0.0:8080登录这个网址就会出现tomcat主页</span><br><span class="line"></span><br><span class="line">127.0.0.1:8080不行，就去百度了一下端口映射的问题</span><br><span class="line">然后发现在创建的时候用这条语句之后就可以访问了将本机的端口映射过去了，在本机浏览器中输入127.0.0.1:8080或localhost:8080既可</span><br><span class="line">docker run --name tomcat -p 127.0.0.1:8080:8080 -d tomcat</span><br></pre></td></tr></table></figure>
+
+<h3 id="mysql的话"><a href="#mysql的话" class="headerlink" title="mysql的话"></a>mysql的话</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">这条语句就搞定了  其中的东西自己配置</span><br><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=123456 -d mysql:5.7</span><br><span class="line"></span><br><span class="line">然后输入docker <span class="built_in">exec</span> -it mysql /bin/bash</span><br><span class="line">mysql -uroot -p123456 测试成功；就Vans了</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/09/19/docker/" target="_blank" title="docker">http://yoursite.com/2019/09/19/docker/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/21/js转jquery/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js转jquery
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/18/scrapy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">scrapy</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#docke的基本使用-容器的创建还有镜像的下载看网址就好："><span class="nav-number">1.</span> <span class="nav-text">docke的基本使用:容器的创建还有镜像的下载看网址就好：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令大全："><span class="nav-number">2.</span> <span class="nav-text">常用命令大全：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始安装tomcat"><span class="nav-number">2.1.</span> <span class="nav-text">开始安装tomcat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mysql的话"><span class="nav-number">2.2.</span> <span class="nav-text">mysql的话</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 小胖 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            小胖
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jr&#39;Blog All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
