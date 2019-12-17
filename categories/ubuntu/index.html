@@ -3,26 +3,19 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>lamp | 小胖</title>
+  <title>category: ubuntu | 小胖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="keywords" content="ubuntu">
   
   
   
-  
-  <meta name="description" content="1.安装nginx服务器 使用官方PPA安装 Nginx 最新版本，使用以下命令： 12345678add-apt-repository ppa:nginx/stableapt-get updateapt-get install nginx Nginx相关控制命令：  启动     ： /etc/init.d/nginx start 关闭     ： /etc/init.d/nginx stop">
-<meta name="keywords" content="ubuntu">
-<meta property="og:type" content="article">
-<meta property="og:title" content="LAMP">
-<meta property="og:url" content="http://yoursite.com/2019/12/18/ubuntuPhpmyadmin/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="小胖">
+<meta property="og:url" content="http://yoursite.com/categories/ubuntu/index.html">
 <meta property="og:site_name" content="小胖">
-<meta property="og:description" content="1.安装nginx服务器 使用官方PPA安装 Nginx 最新版本，使用以下命令： 12345678add-apt-repository ppa:nginx/stableapt-get updateapt-get install nginx Nginx相关控制命令：  启动     ： /etc/init.d/nginx start 关闭     ： /etc/init.d/nginx stop">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-17T16:30:00.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LAMP">
-<meta name="twitter:description" content="1.安装nginx服务器 使用官方PPA安装 Nginx 最新版本，使用以下命令： 12345678add-apt-repository ppa:nginx/stableapt-get updateapt-get install nginx Nginx相关控制命令：  启动     ： /etc/init.d/nginx start 关闭     ： /etc/init.d/nginx stop">
+<meta name="twitter:title" content="小胖">
   
     <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
   
@@ -63,6 +56,8 @@
   
 
   
+    <link rel="stylesheet" href="/css/archive.css">
+  
   
   
 
@@ -70,7 +65,7 @@
 </html>
 
 
-  <body data-spy="scroll" data-target="#toc" data-offset="50">
+  <body>
 
 
   
@@ -93,7 +88,7 @@
             
               <a class="brand" style="
                  margin-top: 0px;"  
-                href="#" data-toggle="modal" data-target="#myModal" >
+                 >
                   <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
               </a>
             
@@ -162,119 +157,43 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;"><article id="post-ubuntuPhpmyadmin" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
-        
+          <section id="main" style="float:none;">
   
-    <h1 class="thumb" class="article-title" itemprop="name">
-      LAMP
-    </h1>
   
-
-      </header>
+  
     
-    <div class="article-meta">
+    
       
-	<a href="/2019/12/18/ubuntuPhpmyadmin/" class="article-date">
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      
+	<a href="/2019/12/18/ubuntuPhpmyadmin/" class="archive-article-date">
 	  <time datetime="2019-12-17T16:14:33.000Z" itemprop="datePublished">2019-12-18</time>
 	</a>
 
       
-    <a class="article-category-link" href="/categories/ubuntu/">ubuntu</a>
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/2019/12/18/ubuntuPhpmyadmin/">LAMP</a>
+    </h1>
+  
 
-      
-	<a class="article-views">
-	<span id="busuanzi_container_page_pv">
-		PV:<span id="busuanzi_value_page_pv"></span>
-	</span>
-	</a>
-
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.安装nginx服务器<br> 使用官方PPA安装 Nginx 最新版本，使用以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:nginx/stable</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install nginx</span><br><span class="line"> Nginx相关控制命令： </span><br><span class="line"> 启动     ： /etc/init.d/nginx start</span><br><span class="line"> 关闭     ： /etc/init.d/nginx stop</span><br><span class="line"> 重启     ： /etc/init.d/nginx restart</span><br><span class="line"> 查看状态 ： /etc/init.d/nginx status</span><br></pre></td></tr></table></figure>
-
-<p>2.安装PHP</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install php5-cli php5-cgi php5-fpm php5-mcrypt php5-mysql</span><br><span class="line"> ※记得安装完之后，一定要重启fpm</span><br><span class="line">/etc/init.d/php5-fpm restart</span><br></pre></td></tr></table></figure>
-
-<p>3.配置nginx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  在修改之前，将默认的配置文件备份</span><br><span class="line">cp -pf /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak</span><br><span class="line">vim /etc/nginx/sites-available/default</span><br></pre></td></tr></table></figure>
-
-<p>  修改 root 为  “root /var/www/nginx;”<br>  修改 index 为 “index index.html index.htm index.php;”<br>  找到以下内容，把对应的前面#注释去掉，如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000</span><br><span class="line">#</span><br><span class="line">location ~ \.php$ &#123;</span><br><span class="line">        fastcgi_split_path_info ^(.+\.php)(/.+)$;</span><br><span class="line">        # NOTE: You should have &quot;cgi.fix_pathinfo = 0;&quot; in php.ini</span><br><span class="line"></span><br><span class="line">        # With php5-cgi alone:</span><br><span class="line">        fastcgi_pass 127.0.0.1:9000;</span><br><span class="line">        # With php5-fpm:</span><br><span class="line">        fastcgi_pass unix:/var/run/php5-fpm.sock;</span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        include fastcgi_params;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.安装MySQL数据库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install mysql-server</span><br><span class="line">  ※安装过程中会提示输入数据库root账号的密码。</span><br></pre></td></tr></table></figure>
-
-<p>5.安装phpmyadmin</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">apt-get install phpmyadmin</span><br><span class="line">  ※安装过程中会提示输入数据库管理员权限的密码，和phpmyadmin自身登录的密码。</span><br><span class="line">  建立连接：</span><br><span class="line">ln -s /usr/share/phpmyadmin /var/www/phpmyadmin</span><br></pre></td></tr></table></figure>
-
-<p>6.测试，在游览器中打开 <a href="http://127.0.0.1/phpmyadmin" target="_blank" rel="noopener">http://127.0.0.1/phpmyadmin</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      <div>
-        <ul class="post-copyright">
-          <li class="post-copyright-author">
-          <strong>Post author:  </strong>Jr&#39;Blog</a>
-          </li>
-          <li class="post-copyright-link">
-          <strong>Post link:  </strong>
-          <a href="/2019/12/18/ubuntuPhpmyadmin/" target="_blank" title="LAMP">http://yoursite.com/2019/12/18/ubuntuPhpmyadmin/</a>
-          </li>
-          <li class="post-copyright-license">
-            <strong>Copyright Notice:   </strong>
-            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
-            unless stating additionally.
-          </li>
-         
-        </ul>
-<div>
-
-      
-      
-      
-        
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
-
-      
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2019/12/17/daily4/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">daily4</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
-<!-- Table of Contents -->
-
-  <aside id="toc-sidebar">
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">Contents</strong>
-    
-        <ol class="nav">None</ol>
-    
-    </div>
-  </aside>
 
 </section>
         
@@ -372,8 +291,6 @@
 
 
 
-  <script src="/js/dialog.js"></script>
-
 
 
 
@@ -457,8 +374,6 @@
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
-    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
