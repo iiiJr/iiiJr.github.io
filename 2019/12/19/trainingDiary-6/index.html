@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>trainingdiary_6 | 小胖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Fabric">
+  
+  
+  
+  
+  <meta name="description" content="2019-12-19-go web随笔go web 接收请求这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下： http.ListenAndServe（）的接收请求，输出响应的流程如下：首先调用Http.HandleFunc 按顺序做了几件事： 1 调用了DefaultServeMux的HandleFunc 2 调用了DefaultServeMux的Handle">
+<meta name="keywords" content="Fabric">
+<meta property="og:type" content="article">
+<meta property="og:title" content="trainingDiary_6">
+<meta property="og:url" content="http://yoursite.com/2019/12/19/trainingDiary-6/index.html">
+<meta property="og:site_name" content="小胖">
+<meta property="og:description" content="2019-12-19-go web随笔go web 接收请求这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下： http.ListenAndServe（）的接收请求，输出响应的流程如下：首先调用Http.HandleFunc 按顺序做了几件事： 1 调用了DefaultServeMux的HandleFunc 2 调用了DefaultServeMux的Handle">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/css/diaryImage/requeImage.png">
+<meta property="og:updated_time" content="2019-12-19T14:50:43.628Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="trainingDiary_6">
+<meta name="twitter:description" content="2019-12-19-go web随笔go web 接收请求这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下： http.ListenAndServe（）的接收请求，输出响应的流程如下：首先调用Http.HandleFunc 按顺序做了几件事： 1 调用了DefaultServeMux的HandleFunc 2 调用了DefaultServeMux的Handle">
+<meta name="twitter:image" content="http://yoursite.com/css/diaryImage/requeImage.png">
+  
+    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-trainingDiary-6" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      trainingDiary_6
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/12/19/trainingDiary-6/" class="article-date">
+	  <time datetime="2019-12-19T13:57:19.000Z" itemprop="datePublished">2019-12-19</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/other/">other</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2019-12-19-go-web随笔"><a href="#2019-12-19-go-web随笔" class="headerlink" title="2019-12-19-go web随笔"></a>2019-12-19-go web随笔</h1><h2 id="go-web-接收请求"><a href="#go-web-接收请求" class="headerlink" title="go web 接收请求"></a>go web 接收请求</h2><p>这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下：</p>
+<p>http.ListenAndServe（）的接收请求，输出响应的流程如下：<br>首先调用Http.HandleFunc</p>
+<p>按顺序做了几件事：</p>
+<p>1 调用了DefaultServeMux的HandleFunc</p>
+<p>2 调用了DefaultServeMux的Handle</p>
+<p>3 往DefaultServeMux的map[string]muxEntry中增加对应的handler和路由规则</p>
+<p>其次调用http.ListenAndServe(“:9090”, nil)</p>
+<p>按顺序做了几件事情：</p>
+<p>1 实例化Server</p>
+<p>2 调用Server的ListenAndServe()</p>
+<p>3 调用net.Listen(“tcp”, addr)监听端口</p>
+<p>4 启动一个for循环，在循环体中Accept请求</p>
+<p>5 对每个请求实例化一个Conn，并且开启一个goroutine为这个请求进行服务go c.serve()</p>
+<p>6 读取每个请求的内容w, err := c.readRequest()</p>
+<p>7 判断handler是否为空，如果没有设置handler（这个例子就没有设置handler），handler就设置为DefaultServeMux</p>
+<p>8 调用handler的ServeHttp</p>
+<p>9 在这个例子中，下面就进入到DefaultServeMux.ServeHttp</p>
+<p>10 根据request选择handler，并且进入到这个handler的ServeHTTP<br>mux.handler(r).ServeHTTP(w, r)</p>
+<p>11 选择handler：</p>
+<p>A 判断是否有路由能满足这个request（循环遍历ServerMux的muxEntry）</p>
+<p>B 如果有路由满足，调用这个路由handler的ServeHttp</p>
+<p>C 如果没有路由满足，调用NotFoundHandler的ServeHttp</p>
+<p>流程图如下：<br><img src="/css/diaryImage/requeImage.png" alt="avatar"></p>
+<h2 id="go-web处理请求数据"><a href="#go-web处理请求数据" class="headerlink" title="go web处理请求数据"></a>go web处理请求数据</h2><p>在Go语言中，使用http.Request结构来处理http请求的数据，在我们定义处理请求的方法，会传入http.Request的实例，如下代码中request就是代表一个请求的实例。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.HandleFunc(<span class="string">"/hello"</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">    <span class="comment">//使用request可以获取http请求的数据</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="request公开可访问字段"><a href="#request公开可访问字段" class="headerlink" title="request公开可访问字段"></a>request公开可访问字段</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Request <span class="keyword">struct</span> &#123;</span><br><span class="line">        Method <span class="keyword">string</span> <span class="comment">//方法:POST,GET...</span></span><br><span class="line">        URL *url.URL <span class="comment">//URL结构体</span></span><br><span class="line">        Proto      <span class="keyword">string</span> <span class="comment">// 协议："HTTP/1.0"</span></span><br><span class="line">        ProtoMajor <span class="keyword">int</span>    <span class="comment">// 1</span></span><br><span class="line">        ProtoMinor <span class="keyword">int</span>    <span class="comment">// 0</span></span><br><span class="line">        Header Header    <span class="comment">//头部信息</span></span><br><span class="line">        Body io.ReadCloser <span class="comment">//请求实体</span></span><br><span class="line">        GetBody <span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="params">(io.ReadCloser, error)</span> // <span class="title">Go</span> 1.8</span></span><br><span class="line"><span class="function">        <span class="title">ContentLength</span> <span class="title">int64</span>  //首部：<span class="title">Content</span>-<span class="title">Length</span></span></span><br><span class="line"><span class="function">        <span class="title">TransferEncoding</span> []<span class="title">string</span></span></span><br><span class="line"><span class="function">        <span class="title">Close</span> <span class="title">bool</span>           //是否已关闭</span></span><br><span class="line"><span class="function">        <span class="title">Host</span> <span class="title">string</span>          //首部<span class="title">Host</span></span></span><br><span class="line"><span class="function">        <span class="title">Form</span> <span class="title">url</span>.<span class="title">Values</span>      //参数查询的数据</span></span><br><span class="line"><span class="function">        <span class="title">PostForm</span> <span class="title">url</span>.<span class="title">Values</span> // <span class="title">application</span>/<span class="title">x</span>-<span class="title">www</span>-<span class="title">form</span>-<span class="title">urlencoded</span>类型的<span class="title">body</span>解码后的数据</span></span><br><span class="line"><span class="function">        <span class="title">MultipartForm</span> *<span class="title">multipart</span>.<span class="title">Form</span> //文件上传时的数据</span></span><br><span class="line"><span class="function">        <span class="title">Trailer</span> <span class="title">Header</span></span></span><br><span class="line"><span class="function">        <span class="title">RemoteAddr</span> <span class="title">string</span>          //请求地址</span></span><br><span class="line"><span class="function">        <span class="title">RequestURI</span> <span class="title">string</span>          //请求的<span class="title">url</span>地址</span></span><br><span class="line"><span class="function">        <span class="title">TLS</span> *<span class="title">tls</span>.<span class="title">ConnectionState</span></span></span><br><span class="line"><span class="function">        <span class="title">Cancel</span> &lt;-<span class="title">chan</span> <span class="title">struct</span></span>&#123;&#125; <span class="comment">// </span></span><br><span class="line">        Response *Response <span class="comment">//      响应数据</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 获得请求头(Header)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> <span class="keyword">go</span></span><br><span class="line">http.HandleFunc(<span class="string">"/hello"</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">    request.RemoteAddr</span><br><span class="line">    request.RequestURI</span><br><span class="line">    request.ContentLength </span><br><span class="line">    request.Proto</span><br><span class="line">    request.Method </span><br><span class="line">    request.Referer()</span><br><span class="line">    request.UserAgent()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 获取查询参数(Query)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> <span class="keyword">go</span></span><br><span class="line">获取查询参数(url中?后面使用&amp;分隔的部分),用request.FormValue(key)方法获取查询参数，其中key为参数的名称，代码如下：</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/hello"</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">        username := request.FormValue(<span class="string">"username"</span>)</span><br><span class="line">        gender := request.FormValue(<span class="string">"gender"</span>)</span><br><span class="line">        fmt.Fprintln(writer,fmt.Sprintf(<span class="string">"用户名：%s,性别:%s"</span>,username,gender))</span><br><span class="line">    &#125;)</span><br><span class="line">    fmt.Println(http.ListenAndServe(<span class="string">":8080"</span>,<span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">### 获取表单信息(Form)</span></span><br><span class="line"><span class="string">我们说获取表单信息，一般是指获取Content-Type是application/x-www-form-urlencoded或multipart/form-data时，请求实体中的数据，如果你有做传统网页中的表单提交数据的经历，相信对这两种提交数据的方式应该是熟悉的，而multipart/form-data一般是用来上传文件的。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">application/x-www-form-urlencoded</span></span><br><span class="line"><span class="string">获取Content-Type为application/x-www-form-urlencoded时提交上来的数据，可以使用request.PostForm字段request.Form和request.PostFormValue(key)方法获取，但必须先调用request.ParseForm()将数据写入request.PostForm字段中。</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用request.ParseForm()函数解析body参数，这时会将参数写入Form字段和PostForm字段当中。</span></span><br><span class="line"><span class="string">使用request.Form、request.PostForm或request.PostFormValue(key)都可以获取</span></span><br><span class="line"><span class="string">request.Form和request.PostForm的类型url.Values，结构定义如下</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> <span class="keyword">go</span></span><br><span class="line"><span class="keyword">type</span> Values <span class="keyword">map</span>[<span class="keyword">string</span>][]<span class="keyword">string</span></span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> <span class="keyword">go</span> </span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/hello"</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">        err := request.ParseForm()</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">        fmt.Fprintln(writer,<span class="string">"解析错误"</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        username1 := request.PostForm[<span class="string">"username"</span>][<span class="number">0</span>]</span><br><span class="line">        username2 := request.PostFormValue(<span class="string">"username"</span>)</span><br><span class="line">        username3 := request.Form[<span class="string">"username"</span>][<span class="number">0</span>]</span><br><span class="line">        fmt.Fprintln(writer,fmt.Sprintf(<span class="string">"username1：%s,username2:%s,usernam3:%s"</span>,username1,username2,username3))</span><br><span class="line">    &#125;)</span><br><span class="line">    fmt.Println(http.ListenAndServe(<span class="string">":8080"</span>,<span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="multipart-form-data"><a href="#multipart-form-data" class="headerlink" title="multipart/form-data"></a>multipart/form-data</h3><p>获取Content-Type为multipart/form-data时提交上来的数据<br>使用request.ParseMultipartForm(maxMemory)，解析参数，将参数写入到MultipartForm字段当中，其中maxMemory为上传文件最大内存。<br>使用request.FormFile(文件域)，可以获取上传的文件对象：multipart.File<br>除了文件域，其中参数可以从request.PostForm字段获取，注意，此时不需要再调用request.ParseForm()了。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"net/http"</span></span><br><span class="line">)</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    http.HandleFunc(<span class="string">"/upload"</span>, <span class="function"><span class="keyword">func</span><span class="params">(writer http.ResponseWriter, request *http.Request)</span></span> &#123;</span><br><span class="line">        err := request.ParseMultipartForm(<span class="number">32</span> &lt;&lt; <span class="number">20</span>)</span><br><span class="line">        <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">            fmt.Fprintln(writer,<span class="string">"文件上传错误"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        fmt.Println(request.FormFile(<span class="string">"file"</span>))</span><br><span class="line">    &#125;)</span><br><span class="line">    fmt.Println(http.ListenAndServe(<span class="string">":8080"</span>,<span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上头介绍的都是表单提交方式，<br>但在现在前后端分离开发趋势和APP开发中，Content-Type指application/json才是更常见的数据提交方式。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/12/19/trainingDiary-6/" target="_blank" title="trainingDiary_6">http://yoursite.com/2019/12/19/trainingDiary-6/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fabric/">Fabric</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/18/trainingDiary-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">trainingDiary_5</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-12-19-go-web随笔"><span class="nav-number">1.</span> <span class="nav-text">2019-12-19-go web随笔</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#go-web-接收请求"><span class="nav-number">1.1.</span> <span class="nav-text">go web 接收请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go-web处理请求数据"><span class="nav-number">1.2.</span> <span class="nav-text">go web处理请求数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#request公开可访问字段"><span class="nav-number">1.2.1.</span> <span class="nav-text">request公开可访问字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#multipart-form-data"><span class="nav-number">1.2.2.</span> <span class="nav-text">multipart/form-data</span></a></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 小胖 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            小胖
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jr&#39;Blog All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
