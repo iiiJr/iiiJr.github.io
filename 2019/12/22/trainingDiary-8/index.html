@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>trainingdiary_8 | 小胖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="keywords" content="Fabric">
+  
+  
+  
+  
+  <meta name="description" content="2019-12-22 Chaincode helloworld第一个链码 helloWorld建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go编写链上代码 helloworld.go 导入关键依赖包 123456import (    &quot;fmt&quot;    /*导入 chaincode shim 包和 peer protobuf">
+<meta name="keywords" content="Fabric">
+<meta property="og:type" content="article">
+<meta property="og:title" content="trainingDiary_8">
+<meta property="og:url" content="http://yoursite.com/2019/12/22/trainingDiary-8/index.html">
+<meta property="og:site_name" content="小胖">
+<meta property="og:description" content="2019-12-22 Chaincode helloworld第一个链码 helloWorld建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go编写链上代码 helloworld.go 导入关键依赖包 123456import (    &quot;fmt&quot;    /*导入 chaincode shim 包和 peer protobuf">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-12-21T16:47:41.319Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="trainingDiary_8">
+<meta name="twitter:description" content="2019-12-22 Chaincode helloworld第一个链码 helloWorld建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go编写链上代码 helloworld.go 导入关键依赖包 123456import (    &quot;fmt&quot;    /*导入 chaincode shim 包和 peer protobuf">
+  
+    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
+}
+
+  </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="/js/jquery-3.1.1.min.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/css/bootstrap.css">
+
+  
+    <link rel="stylesheet" href="/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/css/header-post.css">
+  
+
+  
+  
+  
+
+</head>
+</html>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/">Home</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/archives">Archives</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/categories">Categories</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/tags">Tags</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/about">About</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-trainingDiary-8" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      trainingDiary_8
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/2019/12/22/trainingDiary-8/" class="article-date">
+	  <time datetime="2019-12-21T16:38:16.000Z" itemprop="datePublished">2019-12-22</time>
+	</a>
+
+      
+    <a class="article-category-link" href="/categories/other/">other</a>
+
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+      
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2019-12-22-Chaincode-helloworld"><a href="#2019-12-22-Chaincode-helloworld" class="headerlink" title="2019-12-22 Chaincode helloworld"></a>2019-12-22 Chaincode helloworld</h1><h2 id="第一个链码-helloWorld"><a href="#第一个链码-helloWorld" class="headerlink" title="第一个链码 helloWorld"></a>第一个链码 helloWorld</h2><p>建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go<br>编写链上代码 helloworld.go</p>
+<p>导入关键依赖包</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">"fmt"</span></span><br><span class="line">    <span class="comment">/*导入 chaincode shim 包和 peer protobuf 包*/</span></span><br><span class="line">    <span class="string">"github.com/hyperledger/fabric/core/chaincode/shim"</span></span><br><span class="line">    <span class="string">"github.com/hyperledger/fabric/protos/peer"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现了 Chaincode 接口 Init 方法和 Invoke 方法</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// helloworld 结构体</span></span><br><span class="line"><span class="keyword">type</span> HelloWorld <span class="keyword">struct</span> &#123;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//结构体中的初始化方法</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *HelloWorld)</span> <span class="title">Init</span><span class="params">(stub shim.ChaincodeStubInterface)</span> <span class="title">peer</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//接受 string 数组</span></span><br><span class="line">    args:= stub.GetStringArgs()</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">2</span> &#123;</span><br><span class="line">    	<span class="keyword">return</span> shim.Error(<span class="string">"要输入键和值"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//转为 k-v 写入区块链</span></span><br><span class="line">    err := stub.PutState(args[<span class="number">0</span>],[]<span class="keyword">byte</span>(args[<span class="number">1</span>]))</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    	shim.Error(err.Error())</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//调用Chaincode</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *HelloWorld)</span> <span class="title">Invoke</span><span class="params">(stub shim.ChaincodeStubInterface)</span> <span class="title">peer</span>.<span class="title">Response</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="comment">//获取要调用的方法名和方法参数</span></span><br><span class="line">	fn, args := stub.GetFunctionAndParameters()</span><br><span class="line">	<span class="comment">//根据方法名调用方法（set，get）</span></span><br><span class="line">	<span class="keyword">if</span> fn ==<span class="string">"set"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.set(stub, args)</span><br><span class="line">	&#125;<span class="keyword">else</span> <span class="keyword">if</span> fn == <span class="string">"get"</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> s.get(stub, args)</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> shim.Error(<span class="string">"方法不存在"</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="string">``</span><span class="string">` </span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">set 和 get 业务方法实现</span></span><br><span class="line"><span class="string">`</span><span class="string">``</span> <span class="keyword">go</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *HelloWorld)</span> <span class="title">set</span><span class="params">(stub shim.ChaincodeStubInterface , args []<span class="keyword">string</span>)</span> <span class="title">peer</span>.<span class="title">Response</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(<span class="string">"要输入键和值"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//写入</span></span><br><span class="line">	err := stub.PutState(args[<span class="number">0</span>],[]<span class="keyword">byte</span>(args[<span class="number">1</span>]))</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *HelloWorld)</span> <span class="title">get</span><span class="params">(stub shim.ChaincodeStubInterface, args []<span class="keyword">string</span>)</span> <span class="title">peer</span>.<span class="title">Response</span></span>&#123;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(<span class="string">"要输入一个键"</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//读出</span></span><br><span class="line">	value, err := stub.GetState(args[<span class="number">0</span>])</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	<span class="keyword">return</span> shim.Success(value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后 main 方法，启动实例</p>
+<pre><code class="go"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>{
+
+    <span class="keyword">if</span> err := shim.Start(<span class="built_in">new</span>(HelloWorld)); err != <span class="literal">nil</span> {
+        fmt.Println(<span class="string">"HelloWorld start error"</span>)
+    }
+} </code></pre>
+<p>编写链上代码测试用例 helloworld_test.go<br>利用 chaincode shim包 MockStub 的 MockInit 方法和 MockInvoke 方法 进行模拟测试</p>
+<pre><code class="go"><span class="keyword">import</span> (
+    <span class="string">"fmt"</span>
+    <span class="string">"testing"</span>
+    <span class="string">"github.com/hyperledger/fabric/core/chaincode/shim"</span>
+)
+
+
+
+
+<span class="keyword">var</span> stub *shim.MockStub
+
+<span class="comment">//测试 Init 方法</span>
+<span class="function"><span class="keyword">func</span> <span class="title">testInit</span><span class="params">(t *testing.T, args [][]<span class="keyword">byte</span>)</span></span> {
+
+    res := stub.MockInit(<span class="string">"1"</span>, args)
+    <span class="keyword">if</span> res.Status != shim.OK {
+        fmt.Println(<span class="string">"Init failed : "</span>, <span class="keyword">string</span>(res.Message))
+        t.FailNow()
+    }
+}
+
+<span class="comment">//测试 set 方法</span>
+<span class="function"><span class="keyword">func</span> <span class="title">testSet</span><span class="params">(t *testing.T, key <span class="keyword">string</span>, value <span class="keyword">string</span>)</span></span> {
+
+    res := stub.MockInvoke(<span class="string">"1"</span>, [][]<span class="keyword">byte</span>{[]<span class="keyword">byte</span>(<span class="string">"set"</span>), []<span class="keyword">byte</span>(key),[]<span class="keyword">byte</span>(value)})
+    <span class="keyword">if</span> res.Status != shim.OK {
+        fmt.Println(<span class="string">"set"</span>, key, <span class="string">" failed : "</span>, <span class="keyword">string</span>(res.Message))
+        t.FailNow()
+    }
+
+}
+
+<span class="comment">//测试 get 方法</span>
+<span class="function"><span class="keyword">func</span> <span class="title">testGet</span><span class="params">(t *testing.T, key <span class="keyword">string</span>)</span></span> {
+
+    res := stub.MockInvoke(<span class="string">"1"</span>, [][]<span class="keyword">byte</span>{[]<span class="keyword">byte</span>(<span class="string">"get"</span>), []<span class="keyword">byte</span>(key)})
+    <span class="keyword">if</span> res.Status != shim.OK {
+        fmt.Println(<span class="string">"get"</span>, key, <span class="string">"failed"</span>, <span class="keyword">string</span>(res.Message))
+        t.FailNow()
+    }
+    <span class="keyword">if</span> res.Payload == <span class="literal">nil</span> {
+        fmt.Println(<span class="string">"get"</span>, key, <span class="string">"failed to get value"</span>)
+        t.FailNow()
+    }
+
+    fmt.Println(<span class="string">"get value"</span>, key, <span class="string">" : "</span>, <span class="keyword">string</span>(res.Payload))
+
+}
+
+<span class="comment">//测试</span>
+<span class="function"><span class="keyword">func</span> <span class="title">TestHelloWorld</span><span class="params">(t *testing.T)</span></span> {
+
+    <span class="comment">//模拟实例</span>
+    stub = shim.NewMockStub(<span class="string">"helloworld"</span>, <span class="built_in">new</span>(HelloWorld))
+
+    testInit(t, [][]<span class="keyword">byte</span>{[]<span class="keyword">byte</span>(<span class="string">"hi"</span>), []<span class="keyword">byte</span>(<span class="string">"jonluo"</span>)})
+    testGet(t, <span class="string">"hi"</span>)
+    testSet(t, <span class="string">"say"</span>,<span class="string">"helloworld"</span>)
+    testGet(t,<span class="string">"say"</span>)
+}</code></pre>
+<p>在helloworld文件夹下执行 :<br>    go test -v helloworld_test.go helloworld.go 结果：<br>    === RUN   TestHelloWorld<br>    get value hi  :  jonluo<br>    get value say  :  helloworld<br>    — PASS: TestHelloWorld (0.00s)<br>    PASS<br>    ok      command-line-arguments  0.021s</p>
+<p>第一个案例就算是成功了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2019/12/22/trainingDiary-8/" target="_blank" title="trainingDiary_8">http://yoursite.com/2019/12/22/trainingDiary-8/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fabric/">Fabric</a></li></ul>
+
+      
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/12/20/trainingDiary-7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">trainingDiary_7</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-12-22-Chaincode-helloworld"><span class="nav-number">1.</span> <span class="nav-text">2019-12-22 Chaincode helloworld</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个链码-helloWorld"><span class="nav-number">1.1.</span> <span class="nav-text">第一个链码 helloWorld</span></a></li></ol></li></ol>
+    
+    </div>
+  </aside>
+
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2019 小胖 All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				UV : <span id="busuanzi_value_site_uv"></span> |  
+				PV : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/scripts.js"></script>
+
+
+
+
+  <script src="/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            小胖
+          </div>
+          <div class="panel-body">
+            Copyright © 2019 Jr&#39;Blog All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
