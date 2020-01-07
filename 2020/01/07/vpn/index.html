@@ -3,19 +3,31 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>category: ubuntu | 小胖</title>
+  <title>搭建ss与路由转发 | 小胖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
+  <meta name="keywords" content="ubuntuss">
   
   
   
-  <meta property="og:type" content="website">
-<meta property="og:title" content="小胖">
-<meta property="og:url" content="http://yoursite.com/categories/ubuntu/index.html">
+  
+  <meta name="description" content="搭建宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。  路由转发成功后可以开始搭建了。首先是在ubuntu上搭建了个ss。这个网上很多教程就不多说了，随便百度都有的。 搭建">
+<meta name="keywords" content="ubuntu,ss">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建ss与路由转发">
+<meta property="og:url" content="http://yoursite.com/2020/01/07/vpn/index.html">
 <meta property="og:site_name" content="小胖">
+<meta property="og:description" content="搭建宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。  路由转发成功后可以开始搭建了。首先是在ubuntu上搭建了个ss。这个网上很多教程就不多说了，随便百度都有的。 搭建">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/css/vpn/1.png">
+<meta property="og:image" content="http://yoursite.com/css/vpn/2.png">
+<meta property="og:image" content="http://yoursite.com/css/vpn/3.png">
+<meta property="og:image" content="http://yoursite.com/css/vpn/4.png">
+<meta property="og:updated_time" content="2020-01-07T09:37:49.826Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小胖">
+<meta name="twitter:title" content="搭建ss与路由转发">
+<meta name="twitter:description" content="搭建宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。  路由转发成功后可以开始搭建了。首先是在ubuntu上搭建了个ss。这个网上很多教程就不多说了，随便百度都有的。 搭建">
+<meta name="twitter:image" content="http://yoursite.com/css/vpn/1.png">
   
     <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
   
@@ -56,8 +68,6 @@
   
 
   
-    <link rel="stylesheet" href="/css/archive.css">
-  
   
   
 
@@ -65,7 +75,7 @@
 </html>
 
 
-  <body>
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
   
@@ -88,7 +98,7 @@
             
               <a class="brand" style="
                  margin-top: 0px;"  
-                 >
+                href="#" data-toggle="modal" data-target="#myModal" >
                   <img width="124px" height="124px" alt="Hike News" src="https://coding.net/u/Jrrrr/p/images/git/raw/master/mylogo.jpg">
               </a>
             
@@ -157,74 +167,108 @@
             
       <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
-  
-  
-  
+          <section id="main" style="float:none;"><article id="post-vpn" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2020" class="archive-year">2020</a></h1>
-        </div>
-        <div class="archives">
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      搭建ss与路由转发
+    </h1>
+  
+
+      </header>
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
+    <div class="article-meta">
       
-	<a href="/2020/01/07/vpn/" class="archive-article-date">
+	<a href="/2020/01/07/vpn/" class="article-date">
 	  <time datetime="2020-01-07T09:04:17.000Z" itemprop="datePublished">2020-01-07</time>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2020/01/07/vpn/">搭建ss与路由转发</a>
-    </h1>
-  
+    <a class="article-category-link" href="/categories/ubuntu/">ubuntu</a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2019" class="archive-year">2019</a></h1>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      
-	<a href="/2019/12/18/ubuntuPhpmyadmin/" class="archive-article-date">
-	  <time datetime="2019-12-17T16:14:33.000Z" itemprop="datePublished">2019-12-18</time>
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		PV:<span id="busuanzi_value_page_pv"></span>
+	</span>
 	</a>
 
       
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="archive-article-title" href="/2019/12/18/ubuntuPhpmyadmin/">LAMP</a>
-    </h1>
-  
 
-    </header>
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。<br>所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。</p>
+<p><img src="/css/vpn/1.png" alt="avatar"></p>
+<p>路由转发成功后可以开始搭建了。<br>首先是在ubuntu上搭建了个ss。这个网上很多教程就不多说了，随便百度都有的。</p>
+<p>搭建完成后就是在宿舍机子做实验</p>
+<p><img src="/css/vpn/2.png" alt="avatar"></p>
+<p>最后就是看看能不能上网了。<br><img src="/css/vpn/3.png" alt="avatar"><br>成功。</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>虽然它后面莫名其妙的好了，但还是说一下解决办法。<br>中途遇到个问题发现他只给http走了代理，其他协议并没有走那个代理，所以导致其他软件，网易云，微信等都没有网络（一般来说客户端都会带有全局功能，可我设置了全局还是没有解决），想了挺久也问了下dalao，想到的解决办法就是在软件里设置代理，或者系统全局代理，我用的是软件设置代理。</p>
+<p><img src="/css/vpn/4.png" alt="avatar"><br>软件是proxifier，这样就能解决问题了，虽然网络卡了一点。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+      
+      <div>
+        <ul class="post-copyright">
+          <li class="post-copyright-author">
+          <strong>Post author:  </strong>Jr&#39;Blog</a>
+          </li>
+          <li class="post-copyright-link">
+          <strong>Post link:  </strong>
+          <a href="/2020/01/07/vpn/" target="_blank" title="搭建ss与路由转发">http://yoursite.com/2020/01/07/vpn/</a>
+          </li>
+          <li class="post-copyright-license">
+            <strong>Copyright Notice:   </strong>
+            All articles in this blog are licensed under <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">CC BY-NC-ND 4.0</a>
+            unless stating additionally.
+          </li>
+         
+        </ul>
+<div>
+
+      
+      
+      
+        
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ss/">ss</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+      
+
+    </footer>
   </div>
-</article>
+  
+    
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/12/22/trainingDiary-8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">trainingDiary_8</div>
+    </a>
   
+</nav>
 
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">Contents</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建"><span class="nav-number">1.</span> <span class="nav-text">搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">2.</span> <span class="nav-text">遇到的问题</span></a></li></ol>
+    
+    </div>
+  </aside>
 
 </section>
         
@@ -322,6 +366,8 @@
 
 
 
+  <script src="/js/dialog.js"></script>
+
 
 
 
@@ -405,6 +451,8 @@
   
   <a id="rocket" href="#top" class=""></a>
   <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
   
 </body>
 </html>
