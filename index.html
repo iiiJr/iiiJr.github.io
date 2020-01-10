@@ -1,951 +1,1165 @@
-<!DOCTYPE html>
-<html>
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
   
-  <title>小胖</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-  
-  
-  
-  <meta property="og:type" content="website">
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+
+
+  <meta name="keywords" content="Hexo,Mala">
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
+
+
+<meta property="og:type" content="website">
 <meta property="og:title" content="小胖">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="小胖">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="小胖">
-  
-    <link rel="alternate" href="/atom.xml" title="小胖" type="application/atom+xml">
-  
 
-  
 
-  <link rel="icon" href="https://coding.net/u/Jrrrr/p/images/git/raw/master/mylogo.jpg">
-  <link rel="apple-touch-icon" href="/https://coding.net/u/Jrrrr/p/images/git/raw/master/mylogo.jpg">
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-  <style type="text/css">
-    @font-face{font-family:futura-pt; src:url("css/fonts/FuturaPTBold.otf") format("woff");font-weight:500;font-style:normal;}
-    @font-face{font-family:futura-pt-light; src:url("css/fonts/FuturaPTBook.otf") format("woff");font-weight:lighter;font-style:normal;}
-    @font-face{font-family:futura-pt-italic; src:url("css/fonts/FuturaPTBookOblique.otf") format("woff");font-weight:400;font-style:italic;}
-}
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
 
-  </style>
-  <link rel="stylesheet" href="/css/style.css">
-
-  <script src="/js/jquery-3.1.1.min.js"></script>
-  <script src="/js/bootstrap.js"></script>
-
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="/css/bootstrap.css">
-
-  
-    <link rel="stylesheet" href="/css/home.css">
-  
-
-  
-
-  
-
-  
-  
-  
-
+  <title> 小胖 </title>
 </head>
-</html>
 
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
-  <body>
-
-
-  
-    <header id="header">
-
-	<!-- 背景图模式 -->
-	
-
-    
-      <div id="intrologo" class="intro-logo" style="background-position:center; background-repeat:no-repeat; background-image: url(); background-size: auto 100%;">
-
-      <!-- Support rolling -->  
-        
-        <section class="awSlider">
-          <div class="carousel slide carousel-fade " data-ride="carousel">
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-               
-                  
-                    <div class="item active">
-                  
-                    <img id="carousel-img0" src="https://coding.net/u/Jrrrr/p/images/git/raw/master/8911578390263_.pic_hd.jpg">
-                  </div>
-
-                  <!-- 自适应大图 -->
-                  <script>
-                      var img0 = new Image();
-                      var imageTag0 = document.getElementById("carousel-img0");
-                      img0.src = imageTag0.src;
-                      img0.onload=function(){
-                        if (img0.width / img0.height <= document.body.clientWidth / document.body.clientHeight) {
-                          imageTag0.style.width = document.body.clientWidth + "px";
-                        } else {
-                          imageTag0.style.height = document.body.clientHeight + "px";
-                          imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
-                        }
-                      };
-                  </script>
-                
-            </div>
-
-            <!-- Controls -->
-            <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-              <span class="sr-only">Geri</span>
-            </a>
-            <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-              <span class="sr-only">İleri</span>
-            </a>
-          </div>
-        </section>
-        <script>
-          $('section.awSlider .carousel').carousel({
-              pause: '',
-              interval: 5000
-          });
-          var startImage = $('section.awSlider .item.active > img').attr('src');
-          $('section.awSlider .carousel').on('slid.bs.carousel', function () {
-              var bscn = $(this).find('.item.active > img').attr('src');
-              $('section.awSlider > img').attr('src', bscn);
-          });
-        </script>
-      
-
-    
- 
-
-
-    <canvas width="100%" height="100%"></canvas>
-    <script>
-      var c = document.getElementsByTagName('canvas')[0],
-          x = c.getContext('2d'),
-          w = window.innerWidth,
-          h = window.innerHeight,
-          pr = window.devicePixelRatio || 1,
-          f = 90,
-          q,
-          m = Math,
-          r = 0,
-          u = m.PI*2,
-          v = m.cos,
-          z = m.random
-      c.width = w*pr
-      c.height = h*pr
-      x.scale(pr, pr)
-      x.globalAlpha = 0.6
-
-      <!-- 折线Polyline背景 -->
-      
-    </script>
-    
-
-    
-      <div id="homelogo" class="homelogo" style="background: rgba(255,255,255,1);"> 
-    
-
-        
-          <div class="homelogoback"  style="border: 1px solid #404040;" >
-            <h1><a href="#content" id="logo">小胖</a></h1>
-            <h3></h3>
-            <h5>Jr&#39;Blog</h5>
-            <!-- <p><a href="https://github.com/iTimeTraveler" target="_blank">Github</a></p> -->
-          </div>
-        
-    
-    </div>
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
   </div>
-
-  <!-- 自适应主页背景大图 -->
+<![endif]-->
   
 
- <!-- home_logo_image居中 -->
- 
-    <script>
-        var homelogodiv = document.getElementById("homelogo");
-        if (document.all.homelogo.offsetWidth > document.body.clientWidth) {
-          homelogodiv.style.width = document.body.clientWidth + "px";
-          homelogodiv.style.marginLeft = document.body.clientWidth * -0.5 + "px";
-        } else {
-          homelogodiv.style.width = homelogodiv.clientWidth  + "px";
-          homelogodiv.style.marginLeft = (homelogodiv.clientWidth)  * -0.5 + "px";
-        }
-    </script>
+
+
+  <div class="container one-column 
+   page-home 
+">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Jr'Blog</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
   
 
-  <div class="intro-navigate">
-      <p class="navigater-list">
-        
-          <a id="beautifont" class="main-nav-link" href="/">Home</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/archives">Archives</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/categories">Categories</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/tags">Tags</a>
-        
-          <a id="beautifont" class="main-nav-link" href="/about">About</a>
-        
-      </p>
-  </div>
-
-</header>
   
-  <div id="container">
-    <div id="wrap">
+    <ul id="menu" class="menu ">
       
-            
-      <div id="content" class="outer">
         
-          <section id="main" style="float:none;">
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
   
-    <article id="post-blogSpeed"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
+
+  
+</nav>
+
+ </div>
+    </header>
+
     
+      
+
+      
+
     
-      <header class="article-header">
-        
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/01/08/blogSpeed/">blogSpeed</a>
-    </h1>
-  
 
-      </header>
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+  <section id="posts" class="posts-expand">
     
-    <div class="article-meta">
       
-	<a href="/2020/01/08/blogSpeed/" class="article-date">
-	  <time datetime="2020-01-08T05:53:54.000Z" itemprop="datePublished">2020-01-08</time>
-	</a>
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
       
       
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
+        <h1 class="post-title" itemprop="name headline">
           
-        </p>
-        <p class="article-more-link">
-          <a href="/2020/01/08/blogSpeed/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
+          
+            
+              <a class="post-title-link" href="/2020/01/08/blogSpeed/" itemprop="url">
+                blogSpeed
+              </a>
+            
+          
+        </h1>
       
 
-    </footer>
-  </div>
-  
-</article>
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2020-01-08T13:53:54+08:00" content="2020-01-08">
+            2020-01-08
+          </time>
+        </span>
 
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-vpn"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2020/01/07/vpn/">搭建ss与路由转发</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2020/01/07/vpn/" class="article-date">
-	  <time datetime="2020-01-07T09:04:17.000Z" itemprop="datePublished">2020-01-07</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/ubuntu/">ubuntu</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          搭建宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。
-
-路由转发成功后可以开始搭建了。首先是在ubuntu上搭建了个ss。这个网上很多教程就不多说了，随便百度都有的。
-搭建完成后就是在宿舍机子做实验
-
-最后就是看看能不能上网了。成功。
-遇到的问题虽然它后面莫名其妙的...
-        </p>
-        <p class="article-more-link">
-          <a href="/2020/01/07/vpn/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-trainingDiary-8"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/22/trainingDiary-8/">trainingDiary_8</a>
-    </h1>
-  
+          
+        
+      </div>
+    </header>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/22/trainingDiary-8/" class="article-date">
-	  <time datetime="2019-12-21T16:38:16.000Z" itemprop="datePublished">2019-12-22</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
+    <div class="post-body">
 
       
       
 
+      
+        
+          <span itemprop="articleBody">
+            
+            
+            
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2020/01/08/blogSpeed/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
     </div>
-    <div class="article-entry" itemprop="articleBody">
+
+    <footer class="post-footer">
       
-        <p class="article-excerpt-content">
-          2019-12-22 Chaincode helloworld第一个链码 helloWorld建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go编写链上代码 helloworld.go
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2020/01/07/vpn/" itemprop="url">
+                搭建ss与路由转发
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2020-01-07T17:04:17+08:00" content="2020-01-07">
+            2020-01-07
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/ubuntu/" itemprop="url" rel="index">
+                  <span itemprop="name">ubuntu</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            搭建宿舍楼连接内网在搭个梯子说不定就可以出去上网了。由于没有服务器只有路由器。一开始是想在路由器上搭个pptp啥的。发现实训室的路由器没有vpn功能，就想在电脑上搭建，在路由器做路由转发了。所以我先在路由器上弄了个路由转发。端口我给的是9999.IP地址指的是要做转发的内网ip。
+
+路由转发成功后可
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2020/01/07/vpn/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/22/trainingDiary-8/" itemprop="url">
+                trainingDiary_8
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-22T00:38:16+08:00" content="2019-12-22">
+            2019-12-22
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-22 Chaincode helloworld第一个链码 helloWorld建 helloworld 文件夹，并在文件夹下新建 helloworld.go 和 helloworld_test.go编写链上代码 helloworld.go
 导入关键依赖包
-123456import (    "fmt"    /*导入 chaincode shim 包和 peer protobuf 包*/    "github.com/hyperledger/fabric/core/chai...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/22/trainingDiary-8/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-trainingDiary-7"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
+123456import (
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/22/trainingDiary-8/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/20/trainingDiary-7/">trainingDiary_7</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/20/trainingDiary-7/" class="article-date">
-	  <time datetime="2019-12-20T14:57:17.000Z" itemprop="datePublished">2019-12-20</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          2019-12-20-链码的概念与原理写在前面环境基本搭建完毕，但还是有一点小问题，但已经不影响开发了，所以可以开始学习fabric提供的接口编写代码了。
-链码的概念：Chaincode：链上代码，简称链码，一般是指由开发人员使用Go语言（也支持Java等语言）编写的应用程序代码，提供分布式账本的状态处理逻辑。链码被部署在Fabric的网络节点中，能够独立运行在具有安全特性的受保护的 Docker 容器中，以 gRPC 协议与相应的 peer 节点进行通信，以操作（初始化或管理）分布式账本...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/20/trainingDiary-7/#more">Read More</a>
-        </p>
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
+
+    <footer class="post-footer">
       
 
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+  </article>
 
 
-  
-    <article id="post-trainingDiary-6"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
     
-    
-      <header class="article-header">
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/20/trainingDiary-7/" itemprop="url">
+                trainingDiary_7
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-20T22:57:17+08:00" content="2019-12-20">
+            2019-12-20
+          </time>
+        </span>
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/19/trainingDiary-6/">trainingDiary_6</a>
-    </h1>
-  
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/19/trainingDiary-6/" class="article-date">
-	  <time datetime="2019-12-19T13:57:19.000Z" itemprop="datePublished">2019-12-19</time>
-	</a>
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
 
       
-    <a class="article-category-link" href="/categories/other/">other</a>
-
-      
       
 
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-20-链码的概念与原理写在前面环境基本搭建完毕，但还是有一点小问题，但已经不影响开发了，所以可以开始学习fabric提供的接口编写代码了。
+链码的概念：Chaincode：链上代码，简称链码，一般是指由开发人员使用Go语言（也支持Java等语言）编写的应用程序代码，提供分布式账本的状
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/20/trainingDiary-7/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
     </div>
-    <div class="article-entry" itemprop="articleBody">
+
+    <footer class="post-footer">
       
-        <p class="article-excerpt-content">
-          2019-12-19-go web随笔go web 接收请求这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下：
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/19/trainingDiary-6/" itemprop="url">
+                trainingDiary_6
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-19T21:57:19+08:00" content="2019-12-19">
+            2019-12-19
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-19-go web随笔go web 接收请求这个其实我昨天已经看过了一点，但昨天看的很杂，今天把它全部重新整理了一遍，内容如下：
 http.ListenAndServe（）的接收请求，输出响应的流程如下：首先调用Http.HandleFunc
 按顺序做了几件事：
-1 调用了DefaultServeMux的HandleFunc
-2 调用了DefaultServeMux的Handle
-3 往DefaultServeMux的map[string]muxEntry中增加对应的han...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/19/trainingDiary-6/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-trainingDiary-5"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
+1 调用了Defau
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/19/trainingDiary-6/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/18/trainingDiary-5/">trainingDiary_5</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/18/trainingDiary-5/" class="article-date">
-	  <time datetime="2019-12-18T14:12:06.000Z" itemprop="datePublished">2019-12-18</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          学习go web写在前面关于ubuntu fabric框架方面简单测试案例，交给了队友，所以我先来学go web先了。
-go webhttp包建立Web服务器1234567891011121314151617181920212223242526272829package main import (    "fmt"    "net/http"    "strings"    "log")func sayhelloName(w http.ResponseWriter, r *http.Req...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/18/trainingDiary-5/#more">Read More</a>
-        </p>
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
+
+    <footer class="post-footer">
       
 
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+  </article>
 
 
-  
-    <article id="post-ubuntuPhpmyadmin"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
     
-    
-      <header class="article-header">
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/18/trainingDiary-5/" itemprop="url">
+                trainingDiary_5
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-18T22:12:06+08:00" content="2019-12-18">
+            2019-12-18
+          </time>
+        </span>
+
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/18/ubuntuPhpmyadmin/">LAMP</a>
-    </h1>
-  
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/18/ubuntuPhpmyadmin/" class="article-date">
-	  <time datetime="2019-12-17T16:14:33.000Z" itemprop="datePublished">2019-12-18</time>
-	</a>
+              
+              
 
-      
-    <a class="article-category-link" href="/categories/ubuntu/">ubuntu</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          1.安装nginx服务器 使用官方PPA安装 Nginx 最新版本，使用以下命令：
-12345678add-apt-repository ppa:nginx/stableapt-get updateapt-get install nginx Nginx相关控制命令：  启动     ： /etc/init.d/nginx start 关闭     ： /etc/init.d/nginx stop 重启     ： /etc/init.d/nginx restart 查看状态 ： /etc/...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/18/ubuntuPhpmyadmin/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-daily4"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
+            
+          </span>
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/17/daily4/">trainingDiary_4</a>
-    </h1>
-  
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/17/daily4/" class="article-date">
-	  <time datetime="2019-12-17T13:27:47.000Z" itemprop="datePublished">2019-12-17</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          2019-12-17-按着书籍开始搭建框架。写在前面经历了各种失败，今天书籍终于到了，开始按着书籍来做网络demo了，继续开始做demo。
-按着书籍搭建环境我又一次重新搭建环境，跟着书籍上的框架重新搭建，书籍中有个是脚本搭建，有个是手动实现，我先是用脚本搭建，我使用脚本后，它一直卡在了一拉镜像的步骤，所以就放在那让他继续拉了，我开了另一个窗口实现了手动实现，搭建成功了。然后我继续按着书籍中的案例，编译生成工具，fabric框架搭建网络环境时需要的辅助工具有三个，分别是configtxgen...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/17/daily4/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-daily3"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/16/daily3/">trainingDiary_3</a>
-    </h1>
-  
+      </div>
+    </header>
 
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/16/daily3/" class="article-date">
-	  <time datetime="2019-12-16T15:33:17.000Z" itemprop="datePublished">2019-12-16</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
+    <div class="post-body">
 
       
       
 
-    </div>
-    <div class="article-entry" itemprop="articleBody">
       
-        <p class="article-excerpt-content">
-          2019-12-16-继续建立一个基于fabric网络的demo写在前面昨天晚上大概发现了自己没有上面东西所以创建不了新的网络demo，所以今天继续跟着问题寻找下去（漫无目的），今天继续试着搭建网络。
-重新搭建环境今天一早醒来的第一件事就是给原来的环境拍了个快照，然后重新还原到初始快照，又搭建了一次整个fabric框架，搭建过程我就不复述了，网上很多教程，我是看着这个搭建的。
-1https://www.jianshu.com/p/0ec409f77fb3
-
-重新搭建环境又是一大堆乱七八糟的...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/16/daily3/#more">Read More</a>
-        </p>
-      
-    </div>
-    <footer class="article-footer">
-      
-      
-      
-      
-
-    </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
-
-
-  
-    <article id="post-daily2"  class="article article-type-post" itemscope itemprop="blogPost" >
-  <div id="articleInner" class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 class="thumb" itemprop="name">
-      <a class="article-title" href="/2019/12/15/daily2/">trainingDiary_2</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      
-	<a href="/2019/12/15/daily2/" class="article-date">
-	  <time datetime="2019-12-15T12:26:17.000Z" itemprop="datePublished">2019-12-15</time>
-	</a>
-
-      
-    <a class="article-category-link" href="/categories/other/">other</a>
-
-      
-      
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p class="article-excerpt-content">
-          2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）写在前面昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。
-问题：1:今天去网上可以说是搜了一整天的资料，太零零碎碎了，说的也不大仔细（可能是我太菜了），他们的做法都是先独立创建一个目录文件，我也跟着它创建了：
-12mkdir -p $GOPATH/s...
-        </p>
-        <p class="article-more-link">
-          <a href="/2019/12/15/daily2/#more">Read More</a>
-        </p>
+          <span itemprop="articleBody">
+            
+            学习go web写在前面关于ubuntu fabric框架方面简单测试案例，交给了队友，所以我先来学go web先了。
+go webhttp包建立Web服务器1234567891011121314151617181920212223242526272829package main import ( 
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/18/trainingDiary-5/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
       
     </div>
-    <footer class="article-footer">
-      
-      
-      
+
+    <footer class="post-footer">
       
 
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
-  </div>
-  
-</article>
-
-<!-- Table of Contents -->
+  </article>
 
 
-  
-
-
-  <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/18/ubuntuPhpmyadmin/" itemprop="url">
+                LAMP
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-18T00:14:33+08:00" content="2019-12-18">
+            2019-12-18
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/ubuntu/" itemprop="url" rel="index">
+                  <span itemprop="name">ubuntu</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            1.安装nginx服务器 使用官方PPA安装 Nginx 最新版本，使用以下命令：
+12345678add-apt-repository ppa:nginx/stableapt-get updateapt-get install nginx Nginx相关控制命令：  启动     ： /etc/i
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/18/ubuntuPhpmyadmin/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/17/daily4/" itemprop="url">
+                trainingDiary_4
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-17T21:27:47+08:00" content="2019-12-17">
+            2019-12-17
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-17-按着书籍开始搭建框架。写在前面经历了各种失败，今天书籍终于到了，开始按着书籍来做网络demo了，继续开始做demo。
+按着书籍搭建环境我又一次重新搭建环境，跟着书籍上的框架重新搭建，书籍中有个是脚本搭建，有个是手动实现，我先是用脚本搭建，我使用脚本后，它一直卡在了一拉镜像的步骤
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/17/daily4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/16/daily3/" itemprop="url">
+                trainingDiary_3
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-16T23:33:17+08:00" content="2019-12-16">
+            2019-12-16
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-16-继续建立一个基于fabric网络的demo写在前面昨天晚上大概发现了自己没有上面东西所以创建不了新的网络demo，所以今天继续跟着问题寻找下去（漫无目的），今天继续试着搭建网络。
+重新搭建环境今天一早醒来的第一件事就是给原来的环境拍了个快照，然后重新还原到初始快照，又搭建了一次
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/16/daily3/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2019/12/15/daily2/" itemprop="url">
+                trainingDiary_2
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2019-12-15T20:26:17+08:00" content="2019-12-15">
+            2019-12-15
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/other/" itemprop="url" rel="index">
+                  <span itemprop="name">other</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+            2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）写在前面昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。
+            ...
+          </span>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2019/12/15/daily2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
-</section>
+ </div>
+
         
       </div>
+
       
-        <div align="center" style="margin-top: 30px;"><hr class="hr" style="margin:0px; height:3px;"></div>
-      
-      <footer id="footer">
   
-
-  <div class="container">
-      	<div class="row">
-	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
-	      <p id="copyRightEn">Copyright &copy; 2013 - 2020 小胖 All Rights Reserved.</p>
-	      
-	      
-    		<p class="busuanzi_uv">
-				UV : <span id="busuanzi_value_site_uv"></span> |  
-				PV : <span id="busuanzi_value_site_pv"></span>
-		    </p>
-  		   
-		</div>
-
-		
-  </div>
-</footer>
-
-
-<!-- min height -->
-
-<script>
-    var wrapdiv = document.getElementById("wrap");
-    var contentdiv = document.getElementById("content");
-    var allheader = document.getElementById("allheader");
-
-    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
-    if (allheader != null) {
-      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    } else {
-      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
-    }
-</script>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    <!-- <nav id="mobile-nav">
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Jr'Blog" itemprop="image">
+          <p class="site-author-name" itemprop="name">Jr'Blog</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
   
-    <a href="/" class="mobile-nav-link">Home</a>
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2020
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jr'Blog
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/categories" class="mobile-nav-link">Categories</a>
   
-    <a href="/tags" class="mobile-nav-link">Tags</a>
-  
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-</nav> -->
     
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
 
-<!-- mathjax config similar to math.stackexchange -->
 
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
       }
     });
-</script>
+  </script>
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
     });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/scripts.js"></script>
-
-
-  <script src="/js/home.js"></script>
-
-
-
-
-
-
-
-
-
-
-	<div style="display: none;">
-    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
-  </div>
-
-
-
-	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-	</script>
-
-
-
-
-
-
-  </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="myModalLabel">设置</h2>
-      </div>
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-
-
-      <div class="modal-body">
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
-              正文字号大小
-            </a>
-          </div>
-          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            您已调整页面字体大小
-          </div>
-        </div>
-      
-
-
-          <div style="margin:6px;">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
-              夜间护眼模式
-            </a>
-        </div>
-          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-            夜间模式已经开启，再次单击按钮即可关闭 
-          </div>
-        </div>
-
-        <div>
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-        </div>
-         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-            小胖
-          </div>
-          <div class="panel-body">
-            Copyright © 2020 Jr&#39;Blog All Rights Reserved.
-          </div>
-        </div>
-      </div>
-
-
-      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
-      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
-      <div class="modal-footer">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-      </div>
-    </div>
-  </div>
-</div>
-  
-  <a id="rocket" href="#top" class=""></a>
-  <script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
-  
+  </script>
 </body>
 </html>
