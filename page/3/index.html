@@ -84,7 +84,7 @@
                   
                     <div class="item active">
                   
-                    <img id="carousel-img0" src="https://coding.net/u/Jrrrr/p/images/git/raw/master/8911578390263_.pic_hd.jpg， https://coding.net/u/Jrrrr/p/images/git/raw/master/aj.jpeg">
+                    <img id="carousel-img0" src="https://coding.net/u/Jrrrr/p/images/git/raw/master/8911578390263_.pic_hd.jpg">
                   </div>
 
                   <!-- 自适应大图 -->
@@ -98,6 +98,27 @@
                         } else {
                           imageTag0.style.height = document.body.clientHeight + "px";
                           imageTag0.style.marginLeft = -(document.body.clientHeight * img0.width / img0.height - document.body.clientWidth) / 2 + "px";
+                        }
+                      };
+                  </script>
+                
+                  
+                    <div class="item">
+                  
+                    <img id="carousel-img1" src="https://coding.net/u/Jrrrr/p/images/git/raw/master/aj.jpeg">
+                  </div>
+
+                  <!-- 自适应大图 -->
+                  <script>
+                      var img1 = new Image();
+                      var imageTag1 = document.getElementById("carousel-img1");
+                      img1.src = imageTag1.src;
+                      img1.onload=function(){
+                        if (img1.width / img1.height <= document.body.clientWidth / document.body.clientHeight) {
+                          imageTag1.style.width = document.body.clientWidth + "px";
+                        } else {
+                          imageTag1.style.height = document.body.clientHeight + "px";
+                          imageTag1.style.marginLeft = -(document.body.clientHeight * img1.width / img1.height - document.body.clientWidth) / 2 + "px";
                         }
                       };
                   </script>
