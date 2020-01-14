@@ -8,7 +8,15 @@
 <ul>
 <li><a href="https://app.swiftype.com/home" target="_blank" rel="noopener">https://app.swiftype.com/home</a> </li>
 </ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>注册完后它会让你选择站点搜索和应用搜索，这里选择站点搜索，再单击一下创建web工程<br><img src="/css/swiftype/1.png" alt="avatar"><br>单击后就是输入自己的需要建立搜索的站点了，这里需要在你站点最后面加多一条/，我第一次没加导致没显示出来，然后语言我选择的是English。<br><img src="/css/swiftype/2.png" alt="avatar"><br>这里我创建了个test1，到这个页面就是配置了，点击MANAGE下的Content，就是你页面的所有内容了，可以自定义设置搜索权重什么的这里就不多说。<br><img src="/css/swiftype/3.png" alt="avatar"><br>然后我们单击 Interface下的 install Search去安装它，这里我是已经安装成功了。<br><img src="/css/swiftype/4.png" alt="avatar"><br>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/css/swiftype/5.jpg" alt="avatar"><br>然后在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>注册完后它会让你选择站点搜索和应用搜索，这里选择站点搜索，再单击一下创建web工程<br><img src="/css/swiftype/1.png" alt="avatar"></p>
+<p>单击后就是输入自己的需要建立搜索的站点了，这里需要在你站点最后面加多一条/，我第一次没加导致没显示出来，然后语言我选择的是English。<br><img src="/css/swiftype/2.png" alt="avatar"></p>
+<p>这里我创建了个test1，到这个页面就是配置了，点击MANAGE下的Content，就是你页面的所有内容了，可以自定义设置搜索权重什么的这里就不多说。<br><img src="/css/swiftype/3.png" alt="avatar"></p>
+<p>然后我们单击 Interface下的 install Search去安装它，这里我是已经安装成功了。<br><img src="/css/swiftype/4.png" alt="avatar"></p>
+<p>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/css/swiftype/5.jpg" alt="avatar"></p>
+<p>添加配置，在hexo主题下的——config.ymx中添加</p>
+<pre><code class="bash"><span class="comment"># swiftype search</span>
+swiftype_key: xxxxxxxxxxxx   （xxxx为我我涂黑那张图的那一串key）</code></pre>
+<p>然后在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
 <pre><code class="bash">layout: search
 title: search
 ---
