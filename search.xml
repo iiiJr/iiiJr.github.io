@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ubuntu上安装vue.js</title>
+    <url>/2020/01/29/nodejs/</url>
+    <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>因为想模拟比赛环境，所以搭建一个go gin框架+vue.js，gin框架已经搞定，所以在弄vue.js，但是今天一下午折腾了挺久也没弄出来，后来找到了解决办法。顺便也记录一下免得下次遇到相同的问题又去百度。</p>
+<h2 id="搭建nodejs"><a href="#搭建nodejs" class="headerlink" title="搭建nodejs"></a>搭建nodejs</h2><p>搭建nodejs的话就很简单了，直接打命令就好了</p>
+<figure class="highlight plain"><figcaption><span>apt install nodejs```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">然后在node -v看看有版本吗，有就没问题</span><br><span class="line">然后就是安装npm和cnpm了</span><br><span class="line">npm的安装也是直接命令就好</span><br><span class="line">```sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+
+<p>检测就是npm -v就好了，显示版本就表示安装成功</p>
+<p>然后安装cnpm软件包</p>
+<figure class="highlight plain"><figcaption><span>install -g cnpm --registry</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">然后就是跟着步骤来。</span><br><span class="line">清除node缓存；</span><br><span class="line"></span><br><span class="line">```  sudo npm cache clean -f</span><br></pre></td></tr></table></figure>
+
+<p>安装node版本管理工具’n’;</p>
+<figure class="highlight plain"><figcaption><span>npm install n -g ```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">使用版本管理工具安装指定node或者升级到最新node版本；</span><br><span class="line"></span><br><span class="line">``` sudo n stable  （安装node最新版本）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><figcaption><span>n 10.6.0 （安装node指定版本10.6.0）  ```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">使用node -v查看node版本，如果版本号改变为你想要的则升级成功。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">使用如下命令将vue-cli全局安装到系统环境中 </span><br><span class="line">``` sudo cnpm install -g vue-cli</span><br></pre></td></tr></table></figure>
+
+<p>创建一个基于”webpack”模板的新项目my-vuejs(项目名称自定) </p>
+<figure class="highlight plain"><figcaption><span>vue init webpack my-vuejs  ```</span></figcaption><table><tr><td class="code"><pre><span class="line">此时会提示一些参数： </span><br><span class="line">``` bash</span><br><span class="line">? Project name (my-vuejs) : #是否给定项目名称，否则使用括号内的名称，直接回车即可 </span><br><span class="line">? Project description (A Vue.js project) : #是否给定项目描述，根据个人需要 </span><br><span class="line">? Author (Lex &lt;1612944051@qq.com&gt;) : #作者 </span><br><span class="line">然后出现很长一段文字，直接回车 </span><br><span class="line">? Install vue-router? (Y/n) #是否安装路由，选择Y </span><br><span class="line">? Use ESLint to lint your code? (Y/n) #选择n </span><br><span class="line">? Setup unit tests with Karma + Mocha? (Y/n) #选择n </span><br><span class="line">? Setup e2e tests with Nightwatch? (Y/n) #选择n</span><br></pre></td></tr></table></figure>
+
+<p>然后模板就下载完了。</p>
+<p>进入模板目录，使用install命令安装该模板所需依赖 </p>
+<figure class="highlight plain"><figcaption><span>install ```</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">使用如下命令运行 </span><br><span class="line">``` cnpm run dev</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以快乐的玩耍了</p>
+<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><p>安装npm的时候遇到类似报错</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">The following packages have unmet dependencies:</span><br><span class="line"> npm : Depends: node-gyp (&gt;= 0.10.9) but it is not going to be installed</span><br><span class="line">E: Unable to correct problems, you have held broken packages.</span><br></pre></td></tr></table></figure>
+
+<p>输入如下命令解决问题<br><code>sudo apt-get install nodejs-dev node-gyp libssl1.0-dev</code></p>
+]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+      <tags>
+        <tag>node.js</tag>
+        <tag>ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>blog站内搜索</title>
     <url>/2020/01/14/swiftype/</url>
     <content><![CDATA[<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p> blog换模板后打算重新弄一个站内搜索，折腾了很久后还是觉得swiftype好用，而且很方便。</p>
@@ -15,7 +52,7 @@
 <p>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/css/swiftype/5.jpg" alt="avatar"></p>
 <p>添加配置，在hexo主题下的——config.ymx中添加</p>
 <pre><code class="bash"><span class="comment"># swiftype search</span>
-swiftype_key: xxxxxxxxxxxx   （xxxx为我我涂黑那张图的那一串key）</code></pre>
+swiftype_key: xxxxxxxxxxxx   （xxxx为我涂黑那张图的那一串key）</code></pre>
 <p>然后在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
 <pre><code class="bash">layout: search
 title: search

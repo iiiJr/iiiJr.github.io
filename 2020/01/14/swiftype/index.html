@@ -52,7 +52,7 @@
 <meta property="og:image" content="http://yoursite.com/css/swiftype/4.png">
 <meta property="og:image" content="http://yoursite.com/css/swiftype/5.jpg">
 <meta property="og:image" content="http://yoursite.com/css/swiftype/6.png">
-<meta property="og:updated_time" content="2020-01-14T07:19:32.225Z">
+<meta property="og:updated_time" content="2020-01-29T13:36:55.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="blog站内搜索">
 <meta name="twitter:description" content="写在前面 blog换模板后打算重新弄一个站内搜索，折腾了很久后还是觉得swiftype好用，而且很方便。 注册先去网页上注册一个账号，我一开始用qq邮箱发现行不通，后来就用了学校给的学生邮箱去注册的。  https://app.swiftype.com/home   配置注册完后它会让你选择站点搜索和应用搜索，这里选择站点搜索，再单击一下创建web工程 单击后就是输入自己的需要建立搜索的站点了，这">
@@ -241,15 +241,6 @@
         
 
         
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2020/01/14/swiftype/#comments" itemprop="discussionUrl">
-              <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/14/swiftype/" itemprop="commentsCount"></span>
-            </a>
-          </span>
-          
-        
       </div>
     </header>
 
@@ -271,7 +262,7 @@
 <p>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/css/swiftype/5.jpg" alt="avatar"></p>
 <p>添加配置，在hexo主题下的——config.ymx中添加</p>
 <pre><code class="bash"><span class="comment"># swiftype search</span>
-swiftype_key: xxxxxxxxxxxx   （xxxx为我我涂黑那张图的那一串key）</code></pre>
+swiftype_key: xxxxxxxxxxxx   （xxxx为我涂黑那张图的那一串key）</code></pre>
 <p>然后在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
 <pre><code class="bash">layout: search
 title: search
@@ -294,6 +285,8 @@ title: search
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/29/nodejs/" rel="prev">ubuntu上安装vue.js</a>
             
           </div>
 
@@ -387,15 +380,6 @@ title: search
  </div>
 
         
-          <div class="comments" id="comments">
-            
-              <div id="disqus_thread">
-                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-              </div>
-            <!--
-            
-            -->
-        
       </div>
 
       
@@ -431,7 +415,7 @@ title: search
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">22</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -445,7 +429,7 @@ title: search
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">tags</span>
               </a>
           </div>
@@ -497,7 +481,7 @@ title: search
   </aside>
 
 
-    </div></main>
+    </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner"> <div class="copyright">
@@ -552,8 +536,6 @@ title: search
     }
 
     run_disqus_script('count.js');
-    
-      run_disqus_script('embed.js');
     
   </script>
 
