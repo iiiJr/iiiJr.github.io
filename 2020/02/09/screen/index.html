@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="js,">
+  <meta name="keywords" content="screen,CentOS,">
 
 
 
@@ -38,18 +38,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
 
 
-<meta name="description" content="js对象转换成jquery对象#2019/05/26 123456789//serialize() 方法通过序列化表单值，创建 URL 编码文本字符串。//你可以选择一个或多个表单元素（比如 input 及/或 文本框），或者 form 元素本身。//序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。$(&quot;form&quot;).serialize()//输出后会变成a=1&amp;amp;b=2&amp;a">
-<meta name="keywords" content="js">
+<meta name="description" content="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种） 第一种nohup(我不是用这个的所以就没写了，想了解的话可以去百度看看) 第二种screen首先就是安装了yum install -">
+<meta name="keywords" content="screen,CentOS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js转jquery">
-<meta property="og:url" content="http://yoursite.com/2019/09/21/js转jquery/index.html">
+<meta property="og:title" content="screen">
+<meta property="og:url" content="http://yoursite.com/2020/02/09/screen/index.html">
 <meta property="og:site_name" content="Jr&#39;Blog">
-<meta property="og:description" content="js对象转换成jquery对象#2019/05/26 123456789//serialize() 方法通过序列化表单值，创建 URL 编码文本字符串。//你可以选择一个或多个表单元素（比如 input 及/或 文本框），或者 form 元素本身。//序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。$(&quot;form&quot;).serialize()//输出后会变成a=1&amp;amp;b=2&amp;a">
+<meta property="og:description" content="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种） 第一种nohup(我不是用这个的所以就没写了，想了解的话可以去百度看看) 第二种screen首先就是安装了yum install -">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-12T14:55:00.387Z">
+<meta property="og:updated_time" content="2020-02-09T14:33:51.311Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js转jquery">
-<meta name="twitter:description" content="js对象转换成jquery对象#2019/05/26 123456789//serialize() 方法通过序列化表单值，创建 URL 编码文本字符串。//你可以选择一个或多个表单元素（比如 input 及/或 文本框），或者 form 元素本身。//序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。$(&quot;form&quot;).serialize()//输出后会变成a=1&amp;amp;b=2&amp;a">
+<meta name="twitter:title" content="screen">
+<meta name="twitter:description" content="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种） 第一种nohup(我不是用这个的所以就没写了，想了解的话可以去百度看看) 第二种screen首先就是安装了yum install -">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -59,7 +59,7 @@
   };
 </script>
 
-  <title> js转jquery | Jr'Blog </title>
+  <title> screen | Jr'Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -202,7 +202,7 @@
           
           
             
-              js转jquery
+              screen
             
           
         </h1>
@@ -211,8 +211,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2019-09-21T17:44:23+08:00" content="2019-09-21">
-            2019-09-21
+          <time itemprop="dateCreated" datetime="2020-02-09T22:17:02+08:00" content="2020-02-09">
+            2020-02-09
           </time>
         </span>
 
@@ -243,8 +243,10 @@
       
 
       
-        <span itemprop="articleBody"><p>js对象转换成jquery对象<br>#2019/05/26</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//serialize() 方法通过序列化表单值，创建 URL 编码文本字符串。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//你可以选择一个或多个表单元素（比如 input 及/或 文本框），或者 form 元素本身。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//序列化的值可在生成 AJAX 请求时用于 URL 查询字符串中。</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">"form"</span>).serialize()</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出后会变成a=1&amp;b=2&amp;c=3&amp;d=4&amp;e=5</span></span><br></pre></td></tr></table></figure></span>
+        <span itemprop="articleBody"><h2 id="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"><a href="#这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录" class="headerlink" title="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"></a>这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录</h2><p>断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种）</p>
+<h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>nohup(我不是用这个的所以就没写了，想了解的话可以去百度看看)</p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>screen<br>首先就是安装了<br><code>yum install -y screen</code><br>这一条大家都会不用说了<br>安装好执行很简单直接敲screen在回车一下就进入进程了<br>执行完后将进程放在后台退出时只需要敲Ctrl+A，在按下D就好<br>还有就是杀死进程，重新进入进程等命令就不多说了，毕竟百度都有的东西</p>
+</span>
       
     </div>
 
@@ -252,7 +254,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js/" rel="tag">#js</a>
+            <a href="/tags/screen/" rel="tag">#screen</a>
+          
+            <a href="/tags/CentOS/" rel="tag">#CentOS</a>
           
         </div>
       
@@ -261,13 +265,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/21/ajax/" rel="prev">ajax</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/19/docker/" rel="next">docker</a>
+              <a href="/2020/01/29/nodejs/" rel="next">ubuntu上安装vue-cli</a>
             
           </div>
         </div>
@@ -445,7 +447,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"><span class="nav-number">1.</span> <span class="nav-text">这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一种"><span class="nav-number">1.1.</span> <span class="nav-text">第一种</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二种"><span class="nav-number">1.2.</span> <span class="nav-text">第二种</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -498,9 +500,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'xxx';
-    var disqus_identifier = '2019/09/21/js转jquery/';
-    var disqus_title = 'js转jquery';
-    var disqus_url = 'http://yoursite.com/2019/09/21/js转jquery/';
+    var disqus_identifier = '2020/02/09/screen/';
+    var disqus_title = 'screen';
+    var disqus_url = 'http://yoursite.com/2020/02/09/screen/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
