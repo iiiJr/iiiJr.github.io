@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>js年月日操作</title>
+    <url>/2020/02/09/JSTimeUpdata/</url>
+    <content><![CDATA[<h2 id="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><a href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，" class="headerlink" title="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"></a>记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</h2><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">dateChange</span>(<span class="params">num = <span class="number">1</span>,date = false</span>) </span>{
+　　<span class="keyword">if</span> (!date) {
+　　　　date = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//没有传入值时,默认是当前日期</span>
+　　　　date = date.getFullYear() + <span class="string">'-'</span> + (date.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> + date.getDate();
+　　}
+　　date += <span class="string">" 00:00:00"</span>;<span class="comment">//设置为当天凌晨12点</span>
+　　date = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>(date))/<span class="number">1000</span>;<span class="comment">//转换为时间戳</span>
+　　date += (<span class="number">86400</span>) * num;<span class="comment">//修改后的时间戳</span>
+　　<span class="keyword">var</span> newDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">parseInt</span>(date) * <span class="number">1000</span>);<span class="comment">//转换为时间</span>
+　　<span class="keyword">return</span> newDate.getFullYear() + <span class="string">'-'</span> + (newDate.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> + newDate.getDate();
+}</code></pre>
+<p>入的第一个参数为时间（格式是：xxxx-xx-xx）可以自己修改<br>第二个参数为增加的天数（可以是负数）<br>返回值就是操作过后的时间了</p>
+]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>screen</title>
     <url>/2020/02/09/screen/</url>
     <content><![CDATA[<h2 id="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"><a href="#这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录" class="headerlink" title="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"></a>这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录</h2><p>断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种）</p>

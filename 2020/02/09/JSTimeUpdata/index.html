@@ -29,7 +29,7 @@
 
 
 
-  <meta name="keywords" content="Fabric,">
+  <meta name="keywords" content="js,">
 
 
 
@@ -38,18 +38,18 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
 
 
-<meta name="description" content="2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）写在前面昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。 问题：1:今天去网上可以说是搜了一整天的资料，太零零碎碎了，说的也不大仔细（可能是我太菜了），他们">
-<meta name="keywords" content="Fabric">
+<meta name="description" content="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，function dateChange(num = 1,date = false) { 　　if (!date) { 　　　　date = new Date();//没有传入值时,默认是当前日期 　　　　date = date.getFullYear() + &apos;-&apos; + (date.getMonth() + 1) +">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="trainingDiary_2">
-<meta property="og:url" content="http://yoursite.com/2019/12/15/daily2/index.html">
+<meta property="og:title" content="js年月日操作">
+<meta property="og:url" content="http://yoursite.com/2020/02/09/JSTimeUpdata/index.html">
 <meta property="og:site_name" content="Jr&#39;Blog">
-<meta property="og:description" content="2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）写在前面昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。 问题：1:今天去网上可以说是搜了一整天的资料，太零零碎碎了，说的也不大仔细（可能是我太菜了），他们">
+<meta property="og:description" content="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，function dateChange(num = 1,date = false) { 　　if (!date) { 　　　　date = new Date();//没有传入值时,默认是当前日期 　　　　date = date.getFullYear() + &apos;-&apos; + (date.getMonth() + 1) +">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-17T13:34:00.470Z">
+<meta property="og:updated_time" content="2020-02-09T14:44:51.297Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="trainingDiary_2">
-<meta name="twitter:description" content="2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）写在前面昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。 问题：1:今天去网上可以说是搜了一整天的资料，太零零碎碎了，说的也不大仔细（可能是我太菜了），他们">
+<meta name="twitter:title" content="js年月日操作">
+<meta name="twitter:description" content="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，function dateChange(num = 1,date = false) { 　　if (!date) { 　　　　date = new Date();//没有传入值时,默认是当前日期 　　　　date = date.getFullYear() + &apos;-&apos; + (date.getMonth() + 1) +">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -59,7 +59,7 @@
   };
 </script>
 
-  <title> trainingDiary_2 | Jr'Blog </title>
+  <title> js年月日操作 | Jr'Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -202,7 +202,7 @@
           
           
             
-              trainingDiary_2
+              js年月日操作
             
           
         </h1>
@@ -211,8 +211,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2019-12-15T20:26:17+08:00" content="2019-12-15">
-            2019-12-15
+          <time itemprop="dateCreated" datetime="2020-02-09T22:40:49+08:00" content="2020-02-09">
+            2020-02-09
           </time>
         </span>
 
@@ -221,8 +221,8 @@
             &nbsp; | &nbsp; In
             
               <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                <a href="/categories/other/" itemprop="url" rel="index">
-                  <span itemprop="name">other</span>
+                <a href="/categories/study/" itemprop="url" rel="index">
+                  <span itemprop="name">study</span>
                 </a>
               </span>
 
@@ -243,20 +243,18 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）"><a href="#2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）" class="headerlink" title="2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）"></a>2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>昨天看了sdk的基本包应用和了解了fabirc框架的一些部分节点组织通道之类的作用，但是也还没继续深入（这个先交给我的好队友吧），今天想先试着搭建一个新的网络demo并写一下基本的账户管理，可是我发现我并没搭出来。</p>
-<h2 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h2><h3 id="1"><a href="#1" class="headerlink" title="1:"></a>1:</h3><p>今天去网上可以说是搜了一整天的资料，太零零碎碎了，说的也不大仔细（可能是我太菜了），他们的做法都是先独立创建一个目录文件，我也跟着它创建了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p $GOPATH/src/github.com/hyperledger/fabric-demo</span><br><span class="line">cd $GOPATH/src/github.com/hyperledger/fabric-demo</span><br></pre></td></tr></table></figure>
-
-<p>可是，创建完后，我就傻了，据博客所说，它上面有配置文件，它说先初始化容器，我初始化了，然后！然后生产节点PKI文件和创世块等基础配置，它是直接打了这两个命令！课我没有这个generate.sh啊！！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd basic-network/</span><br><span class="line">./generate.sh</span><br></pre></td></tr></table></figure>
-
-<p>好的，开始研究，它是哪来的，它说了一段话，说这是它写好的配置文件，可它没说写哪，我就自己找了下，发现它博客下面有github项目地址，配置文件是在那里，我就把它给考进了我的ubuntu中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/wesker8088/fabric-account.git</span><br></pre></td></tr></table></figure>
-
-<p>clone下来后，我将它放进我的文件夹中，然后运行它，它就报错了，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./generate.sh: 16: ./generate.sh: cryptogen: not found Failed to generate crypto material...</span><br></pre></td></tr></table></figure>
-
-<p>翻译是未生成加密材料<br>这个我也不知道是什么错，然后又开始找错误。<br>网上找到的问题解答，各种各样，我也试了很多种，没有一种是可以的。也觉得很奇怪，不明白为什么，我就去看了fabric的中文文档，看看可不可以看出什么来。<br>然后我就发现了，文档的环境搭建,因为我是搭建完成了环境的，我就接着他搭建完环境的步骤继续走下去，它上面写了个工具，叫configtxgen，它的作用是生成两个内容： Orderer的bootstrap block和Fabric的channel configuration transaction。<br>然后我就在我搭建好的环境里，找这个工具，然而并没有找到。<br>没有找到我也就先跳过了，在后面继续看别的，文档说它为了给我们方便使用，给了我们一个脚本，这脚本叫generateCfgTrx.sh，意思就是整合了上面的工具，帮我门生成那两个内容，然而我也没有这个脚本，至于为什么这些脚本为什么都没有，我也不是很清楚，可能是因为fabric版本不一样，也可能是安装环境是出现了我不知道的错误，所以我就继续往后看。<br>文档中有一段，教我们怎么搭建第一个网络，我点进去看了，它说在例子中有一个脚本，可以帮助你快速搭建一个网络，然后，我这个脚本也没用，它叫byfn.sh。<br>又开始了百度之旅，我搜的是fabric文件例子中为什么没有byfn.sh这个脚本，结果出来的百度，只有运行它之后为什么报错，好像没有人没遇到我这个情况，在加上百度资料也少，（人也快傻了）害！！！</p>
+        <span itemprop="articleBody"><h2 id="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><a href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，" class="headerlink" title="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"></a>记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</h2><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">dateChange</span>(<span class="params">num = <span class="number">1</span>,date = false</span>) </span>{
+　　<span class="keyword">if</span> (!date) {
+　　　　date = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//没有传入值时,默认是当前日期</span>
+　　　　date = date.getFullYear() + <span class="string">'-'</span> + (date.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> + date.getDate();
+　　}
+　　date += <span class="string">" 00:00:00"</span>;<span class="comment">//设置为当天凌晨12点</span>
+　　date = <span class="built_in">Date</span>.parse(<span class="keyword">new</span> <span class="built_in">Date</span>(date))/<span class="number">1000</span>;<span class="comment">//转换为时间戳</span>
+　　date += (<span class="number">86400</span>) * num;<span class="comment">//修改后的时间戳</span>
+　　<span class="keyword">var</span> newDate = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">parseInt</span>(date) * <span class="number">1000</span>);<span class="comment">//转换为时间</span>
+　　<span class="keyword">return</span> newDate.getFullYear() + <span class="string">'-'</span> + (newDate.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> + newDate.getDate();
+}</code></pre>
+<p>入的第一个参数为时间（格式是：xxxx-xx-xx）可以自己修改<br>第二个参数为增加的天数（可以是负数）<br>返回值就是操作过后的时间了</p>
 </span>
       
     </div>
@@ -265,7 +263,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Fabric/" rel="tag">#Fabric</a>
+            <a href="/tags/js/" rel="tag">#js</a>
           
         </div>
       
@@ -274,13 +272,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/16/daily3/" rel="prev">trainingDiary_3</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/14/日记/" rel="next">trainingDiary_1</a>
+              <a href="/2020/02/09/screen/" rel="next">screen</a>
             
           </div>
         </div>
@@ -458,7 +454,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）"><span class="nav-number">1.</span> <span class="nav-text">2019-12-15-建立一个基于fabric网络的demo（然而并没有成功）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题："><span class="nav-number">1.2.</span> <span class="nav-text">问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.2.1.</span> <span class="nav-text">1:</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><span class="nav-number">1.</span> <span class="nav-text">记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
@@ -511,9 +507,9 @@
 
   <script type="text/javascript">
     var disqus_shortname = 'xxx';
-    var disqus_identifier = '2019/12/15/daily2/';
-    var disqus_title = 'trainingDiary_2';
-    var disqus_url = 'http://yoursite.com/2019/12/15/daily2/';
+    var disqus_identifier = '2020/02/09/JSTimeUpdata/';
+    var disqus_title = 'js年月日操作';
+    var disqus_url = 'http://yoursite.com/2020/02/09/JSTimeUpdata/';
 
     function run_disqus_script(disqus_script){
       var dsq = document.createElement('script');
