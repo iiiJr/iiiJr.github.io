@@ -3,7 +3,7 @@
   <entry>
     <title>js年月日操作</title>
     <url>/2020/02/09/JSTimeUpdata/</url>
-    <content><![CDATA[<h2 id="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><a href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，" class="headerlink" title="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"></a>记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</h2><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">dateChange</span>(<span class="params">num = <span class="number">1</span>,date = false</span>) </span>{
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><a href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，" class="headerlink" title="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"></a>记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</h3><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">dateChange</span>(<span class="params">num = <span class="number">1</span>,date = false</span>) </span>{
 　　<span class="keyword">if</span> (!date) {
 　　　　date = <span class="keyword">new</span> <span class="built_in">Date</span>();<span class="comment">//没有传入值时,默认是当前日期</span>
 　　　　date = date.getFullYear() + <span class="string">'-'</span> + (date.getMonth() + <span class="number">1</span>) + <span class="string">'-'</span> + date.getDate();
@@ -26,7 +26,7 @@
   <entry>
     <title>screen</title>
     <url>/2020/02/09/screen/</url>
-    <content><![CDATA[<h2 id="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"><a href="#这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录" class="headerlink" title="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"></a>这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录</h2><p>断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种）</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"><a href="#这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录" class="headerlink" title="这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录"></a>这两天做了个小demo并且部署在了服务器上，我在用服务器运行项目的时候离开了一段时间，然后想在手机上操作一下发型那个运行的项目已经被kill掉了，所以就有了今天的水文记录</h3><p>断开ssh链接之后，如果想保住ssh断开后继续保持进程更新的话是有两种办法的（我只找到了这两种）</p>
 <h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><p>nohup(我不是用这个的所以就没写了，想了解的话可以去百度看看)</p>
 <h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><p>screen<br>首先就是安装了<br><code>yum install -y screen</code><br>这一条大家都会不用说了<br>安装好执行很简单直接敲screen在回车一下就进入进程了<br>执行完后将进程放在后台退出时只需要敲Ctrl+A，在按下D就好<br>还有就是杀死进程，重新进入进程等命令就不多说了，毕竟百度都有的东西</p>
 ]]></content>
