@@ -1,0 +1,739 @@
+
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head><meta name="generator" content="Hexo 3.9.0">
+  
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5">
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1">
+
+
+
+
+  <meta name="keywords" content="Java,JVM,">
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1">
+
+
+<meta name="description" content="前言疫情期间并不知道做点什么，所以去下载了挺多电子书来看。这是其中一本 1.1 概述java是SUN(Stanford University Network，斯坦福大学网络公司)1995年推出的一门高级语言。 是一种面向Internet的编程语言。随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。是简单易学，完全面向对象，安全可靠，与平台无关的编程语言。 1.2 Jav">
+<meta name="keywords" content="Java,JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java虚拟机_（一）走近Java">
+<meta property="og:url" content="http://yoursite.com/2020/03/20/JVM-1/index.html">
+<meta property="og:site_name" content="Jr&#39;Blog">
+<meta property="og:description" content="前言疫情期间并不知道做点什么，所以去下载了挺多电子书来看。这是其中一本 1.1 概述java是SUN(Stanford University Network，斯坦福大学网络公司)1995年推出的一门高级语言。 是一种面向Internet的编程语言。随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。是简单易学，完全面向对象，安全可靠，与平台无关的编程语言。 1.2 Jav">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/images/JVM_1/jvm_1.png">
+<meta property="og:image" content="http://yoursite.com/images/JVM_1/jvm_2.jpeg">
+<meta property="og:updated_time" content="2020-05-02T08:26:16.657Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java虚拟机_（一）走近Java">
+<meta name="twitter:description" content="前言疫情期间并不知道做点什么，所以去下载了挺多电子书来看。这是其中一本 1.1 概述java是SUN(Stanford University Network，斯坦福大学网络公司)1995年推出的一门高级语言。 是一种面向Internet的编程语言。随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。是简单易学，完全面向对象，安全可靠，与平台无关的编程语言。 1.2 Jav">
+<meta name="twitter:image" content="http://yoursite.com/images/JVM_1/jvm_1.png">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> Java虚拟机_（一）走近Java | Jr'Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">小胖</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br>
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br>
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br>
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br>
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br>
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <form class="site-search-form">
+    <input type="text" id="st-search-input" class="st-search-input st-default-search-input">
+  </form>
+
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', '1Skke6DF8G8ssdy_Excj','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+      
+
+      
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              Java虚拟机_（一）走近Java
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2020-03-20T15:07:08+08:00" content="2020-03-20">
+            2020-03-20
+          </time>
+        </span>
+
+        
+          <span class="post-category">
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/study/" itemprop="url" rel="index">
+                  <span itemprop="name">study</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>疫情期间并不知道做点什么，所以去下载了挺多电子书来看。这是其中一本</p>
+<h3 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h3><p>java是SUN(Stanford University Network，斯坦福大学网络公司)1995年推出的一门高级语言。</p>
+<p>是一种面向Internet的编程语言。<br>随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。<br>是<strong>简单易学，完全面向对象，安全可靠，与平台无关</strong>的编程语言。</p>
+<h3 id="1-2-Java技术体系"><a href="#1-2-Java技术体系" class="headerlink" title="1.2 Java技术体系"></a>1.2 Java技术体系</h3><p>官方定义的JAVA技术体系包括:JAVA语言、各平台支持JAVA虚拟机、Class文件格式、Java API类库、来自商业或开源社区第三方Java库。</p>
+<p>我们可以把Java语言、Java虚拟机、Java API类库三部分看做JDK（Java Development Kit）。</p>
+<p><img src="/images/JVM_1/jvm_1.png" alt="Java技术体系包含的内容，JDK和JRE所涵盖的范围"></p>
+<h4 id="按照技术体系可以划分为四个平台"><a href="#按照技术体系可以划分为四个平台" class="headerlink" title="按照技术体系可以划分为四个平台"></a>按照技术体系可以划分为四个平台</h4><h5 id="Java-Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台"><a href="#Java-Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台" class="headerlink" title="Java Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台"></a>Java Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台</h5><h5 id="Java-ME-Micro-Edition-：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java-API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。"><a href="#Java-ME-Micro-Edition-：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java-API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。" class="headerlink" title="Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。"></a>Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。</h5><h5 id="Java-SE-Standard-Edition-：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。"><a href="#Java-SE-Standard-Edition-：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。" class="headerlink" title="Java SE(Standard Edition)：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。"></a>Java SE(Standard Edition)：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。</h5><h5 id="Java-EE-Enterprise-Edition-：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java-SE-API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。"><a href="#Java-EE-Enterprise-Edition-：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java-SE-API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。" class="headerlink" title="Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java SE API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。"></a>Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java SE API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。</h5><h3 id="1-3-Java发展史"><a href="#1-3-Java发展史" class="headerlink" title="1.3 Java发展史"></a>1.3 Java发展史</h3><p><img src="/images/JVM_1/jvm_2.jpeg" alt="Java发展史"></p>
+<h3 id="1-4-Java技术的未来"><a href="#1-4-Java技术的未来" class="headerlink" title="1.4 Java技术的未来"></a>1.4 Java技术的未来</h3><h4 id="1-4-1-模块化"><a href="#1-4-1-模块化" class="headerlink" title="1.4.1 模块化"></a>1.4.1 模块化</h4><p>为了解决应用系统与技术平台越来越复杂、越来越庞大而产生的一系列问题。</p>
+<h4 id="1-4-2-混合语言"><a href="#1-4-2-混合语言" class="headerlink" title="1.4.2 混合语言"></a>1.4.2 混合语言</h4><p>单一的Java语法已经无法满足当前软件的复杂需求（各个语言的特长）</p>
+<h4 id="1-4-3-多核并行"><a href="#1-4-3-多核并行" class="headerlink" title="1.4.3 多核并行"></a>1.4.3 多核并行</h4><p>cpu发展方向从高频率变为多核心，JDK1.7中也加入了java.util.concurrent.forkjoin包。在JDK外围，也除了专为满足并行计算需求的计算框架，如Apache的Hadoop Map/Reduce。是一个简单易懂的并行框架。</p>
+<h4 id="1-4-4-丰富语法"><a href="#1-4-4-丰富语法" class="headerlink" title="1.4.4 丰富语法"></a>1.4.4 丰富语法</h4><p>早在JDK1.5的时候就对语法进行了扩充，主要加入了自动装箱、泛型、动态注解、枚举、可变长参数、循环遍历等语法特性，使Java有很大的进步。</p>
+<h4 id="1-4-5-64位虚拟机"><a href="#1-4-5-64位虚拟机" class="headerlink" title="1.4.5 64位虚拟机"></a>1.4.5 64位虚拟机</h4><p>cpu很久前就支持64位架构。Java虚拟机也早已推出支持64位系统版本，但仍需付出比较大的代价：内存，指针膨胀和数据类型对齐补白等原因。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/JVM/" rel="tag">#JVM</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/09/JSTimeUpdata/" rel="next">js年月日操作</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="Jr'Blog" itemprop="image">
+          <p class="site-author-name" itemprop="name">Jr'Blog</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">26</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://github.com/iiijr" target="_blank">GitHub</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+            <p class="site-author-name">友链</p>
+            
+              <span class="links-of-author-item">
+              <a href target="_blank">About</a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概述"><span class="nav-number">2.</span> <span class="nav-text">1.1 概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Java技术体系"><span class="nav-number">3.</span> <span class="nav-text">1.2 Java技术体系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按照技术体系可以划分为四个平台"><span class="nav-number">3.1.</span> <span class="nav-text">按照技术体系可以划分为四个平台</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台"><span class="nav-number">3.1.1.</span> <span class="nav-text">Java Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-ME-Micro-Edition-：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java-API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。"><span class="nav-number">3.1.2.</span> <span class="nav-text">Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-SE-Standard-Edition-：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。"><span class="nav-number">3.1.3.</span> <span class="nav-text">Java SE(Standard Edition)：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Java-EE-Enterprise-Edition-：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java-SE-API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。"><span class="nav-number">3.1.4.</span> <span class="nav-text">Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java SE API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Java发展史"><span class="nav-number">4.</span> <span class="nav-text">1.3 Java发展史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Java技术的未来"><span class="nav-number">5.</span> <span class="nav-text">1.4 Java技术的未来</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-1-模块化"><span class="nav-number">5.1.</span> <span class="nav-text">1.4.1 模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-2-混合语言"><span class="nav-number">5.2.</span> <span class="nav-text">1.4.2 混合语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-3-多核并行"><span class="nav-number">5.3.</span> <span class="nav-text">1.4.3 多核并行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-4-丰富语法"><span class="nav-number">5.4.</span> <span class="nav-text">1.4.4 丰富语法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-5-64位虚拟机"><span class="nav-number">5.5.</span> <span class="nav-text">1.4.5 64位虚拟机</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright">
+  
+  &copy; &nbsp;  2019 - 
+  <span itemprop="copyrightYear">2020
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jr'Blog
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="https://idhyt.github.io">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  <script type="text/javascript">
+    var disqus_shortname = 'xxx';
+    var disqus_identifier = '2020/03/20/JVM-1/';
+    var disqus_title = 'Java虚拟机_（一）走近Java';
+    var disqus_url = 'http://yoursite.com/2020/03/20/JVM-1/';
+
+    function run_disqus_script(disqus_script){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }
+
+    run_disqus_script('count.js');
+    
+  </script>
+
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

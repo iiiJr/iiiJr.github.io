@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java虚拟机_（一）走近Java</title>
+    <url>/2020/03/20/JVM-1/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>疫情期间并不知道做点什么，所以去下载了挺多电子书来看。这是其中一本</p>
+<h3 id="1-1-概述"><a href="#1-1-概述" class="headerlink" title="1.1 概述"></a>1.1 概述</h3><p>java是SUN(Stanford University Network，斯坦福大学网络公司)1995年推出的一门高级语言。</p>
+<p>是一种面向Internet的编程语言。<br>随着Java技术在web方面的不断成熟，已经成为Web应用程序的首选开发语言。<br>是<strong>简单易学，完全面向对象，安全可靠，与平台无关</strong>的编程语言。</p>
+<h3 id="1-2-Java技术体系"><a href="#1-2-Java技术体系" class="headerlink" title="1.2 Java技术体系"></a>1.2 Java技术体系</h3><p>官方定义的JAVA技术体系包括:JAVA语言、各平台支持JAVA虚拟机、Class文件格式、Java API类库、来自商业或开源社区第三方Java库。</p>
+<p>我们可以把Java语言、Java虚拟机、Java API类库三部分看做JDK（Java Development Kit）。</p>
+<p><img src="/images/JVM_1/jvm_1.png" alt="Java技术体系包含的内容，JDK和JRE所涵盖的范围"></p>
+<h4 id="按照技术体系可以划分为四个平台"><a href="#按照技术体系可以划分为四个平台" class="headerlink" title="按照技术体系可以划分为四个平台"></a>按照技术体系可以划分为四个平台</h4><h5 id="Java-Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台"><a href="#Java-Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台" class="headerlink" title="Java Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台"></a>Java Card：支持一些Java小程序（Applets）运行在小内存设备（智能卡）上的平台</h5><h5 id="Java-ME-Micro-Edition-：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java-API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。"><a href="#Java-ME-Micro-Edition-：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java-API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。" class="headerlink" title="Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。"></a>Java ME(Micro Edition)：支持Java程序运行在移动终端（手机、PDA）上的平台，对Java API有所精简，并加入了针对移动终端的支持，这个版本以前成为J2ME。</h5><h5 id="Java-SE-Standard-Edition-：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。"><a href="#Java-SE-Standard-Edition-：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。" class="headerlink" title="Java SE(Standard Edition)：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。"></a>Java SE(Standard Edition)：支持免修桌面级应用（如Windows下的应用程序）的Java平台，提供了完整的Java核心Api，这个版本以前称为J2SE。</h5><h5 id="Java-EE-Enterprise-Edition-：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java-SE-API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。"><a href="#Java-EE-Enterprise-Edition-：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java-SE-API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。" class="headerlink" title="Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java SE API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。"></a>Java EE(Enterprise Edition)：支持使用多层架构的企业应用（如ERP、CRM应用）的Java平台，除了提供Java SE API外，还对其做了大量的扩充并提供了相关的部署支持，这个版本以前称为J2EE。</h5><h3 id="1-3-Java发展史"><a href="#1-3-Java发展史" class="headerlink" title="1.3 Java发展史"></a>1.3 Java发展史</h3><p><img src="/images/JVM_1/jvm_2.jpeg" alt="Java发展史"></p>
+<h3 id="1-4-Java技术的未来"><a href="#1-4-Java技术的未来" class="headerlink" title="1.4 Java技术的未来"></a>1.4 Java技术的未来</h3><h4 id="1-4-1-模块化"><a href="#1-4-1-模块化" class="headerlink" title="1.4.1 模块化"></a>1.4.1 模块化</h4><p>为了解决应用系统与技术平台越来越复杂、越来越庞大而产生的一系列问题。</p>
+<h4 id="1-4-2-混合语言"><a href="#1-4-2-混合语言" class="headerlink" title="1.4.2 混合语言"></a>1.4.2 混合语言</h4><p>单一的Java语法已经无法满足当前软件的复杂需求（各个语言的特长）</p>
+<h4 id="1-4-3-多核并行"><a href="#1-4-3-多核并行" class="headerlink" title="1.4.3 多核并行"></a>1.4.3 多核并行</h4><p>cpu发展方向从高频率变为多核心，JDK1.7中也加入了java.util.concurrent.forkjoin包。在JDK外围，也除了专为满足并行计算需求的计算框架，如Apache的Hadoop Map/Reduce。是一个简单易懂的并行框架。</p>
+<h4 id="1-4-4-丰富语法"><a href="#1-4-4-丰富语法" class="headerlink" title="1.4.4 丰富语法"></a>1.4.4 丰富语法</h4><p>早在JDK1.5的时候就对语法进行了扩充，主要加入了自动装箱、泛型、动态注解、枚举、可变长参数、循环遍历等语法特性，使Java有很大的进步。</p>
+<h4 id="1-4-5-64位虚拟机"><a href="#1-4-5-64位虚拟机" class="headerlink" title="1.4.5 64位虚拟机"></a>1.4.5 64位虚拟机</h4><p>cpu很久前就支持64位架构。Java虚拟机也早已推出支持64位系统版本，但仍需付出比较大的代价：内存，指针膨胀和数据类型对齐补白等原因。</p>
+]]></content>
+      <categories>
+        <category>study</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>JVM</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>js年月日操作</title>
     <url>/2020/02/09/JSTimeUpdata/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"><a href="#记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，" class="headerlink" title="记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，"></a>记录一下写过的一个关于js的时间操作问题，以后能直接用，当然也能用在别的语言上，</h3><pre><code class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">dateChange</span>(<span class="params">num = <span class="number">1</span>,date = false</span>) </span>{
@@ -73,6 +97,7 @@
       <tags>
         <tag>node.js</tag>
         <tag>ubuntu</tag>
+        <tag>vue.js</tag>
       </tags>
   </entry>
   <entry>
@@ -83,20 +108,18 @@
 <ul>
 <li><a href="https://app.swiftype.com/home" target="_blank" rel="noopener">https://app.swiftype.com/home</a> </li>
 </ul>
-<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>注册完后它会让你选择站点搜索和应用搜索，这里选择站点搜索，再单击一下创建web工程<br><img src="/css/swiftype/1.png" alt="avatar"></p>
-<p>单击后就是输入自己的需要建立搜索的站点了，这里需要在你站点最后面加多一条/，我第一次没加导致没显示出来，然后语言我选择的是English。<br><img src="/css/swiftype/2.png" alt="avatar"></p>
-<p>这里我创建了个test1，到这个页面就是配置了，点击MANAGE下的Content，就是你页面的所有内容了，可以自定义设置搜索权重什么的这里就不多说。<br><img src="/css/swiftype/3.png" alt="avatar"></p>
-<p>然后我们单击 Interface下的 install Search去安装它，这里我是已经安装成功了。<br><img src="/css/swiftype/4.png" alt="avatar"></p>
-<p>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/css/swiftype/5.jpg" alt="avatar"></p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>注册完后它会让你选择站点搜索和应用搜索，这里选择站点搜索，再单击一下创建web工程<br><img src="/images/swiftype/1.png" alt="avatar"></p>
+<p>单击后就是输入自己的需要建立搜索的站点了，这里需要在你站点最后面加多一条/，我第一次没加导致没显示出来，然后语言我选择的是English。<br><img src="/images/swiftype/2.png" alt="avatar"></p>
+<p>这里我创建了个test1，到这个页面就是配置了，点击MANAGE下的Content，就是你页面的所有内容了，可以自定义设置搜索权重什么的这里就不多说。<br><img src="/images/swiftype/3.png" alt="avatar"></p>
+<p>然后我们单击 Interface下的 install Search去安装它，这里我是已经安装成功了。<br><img src="/images/swiftype/4.png" alt="avatar"></p>
+<p>我是自己配置搜索结果页的，所以自己在hexo中新建页面<br><img src="/images/swiftype/5.jpg" alt="avatar"></p>
 <p>添加配置，在hexo主题下的——config.ymx中添加</p>
-<pre><code class="bash"><span class="comment"># swiftype search</span>
-swiftype_key: xxxxxxxxxxxx   （xxxx为我涂黑那张图的那一串key）</code></pre>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># swiftype search</span></span><br><span class="line">swiftype_key: xxxxxxxxxxxx   （xxxx为我涂黑那张图的那一串key）</span><br></pre></td></tr></table></figure>
+
 <p>然后在hexo的source目录下建立一个search文件夹，并在其中新建一个index.md文件，其内容为：</p>
-<pre><code class="bash">layout: search
-title: search
----
-&lt;div class=<span class="string">"st-search-container"</span>&gt;&lt;/div&gt;</code></pre>
-<p>然后在更新部署后就可以尝试有没有搜索功能了<br><img src="/css/swiftype/6.png" alt="avatar"><br>成功了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">layout: search</span><br><span class="line">title: search</span><br><span class="line">---</span><br><span class="line">&lt;div class=<span class="string">"st-search-container"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>然后在更新部署后就可以尝试有没有搜索功能了<br><img src="/images/swiftype/6.png" alt="avatar"><br>成功了</p>
 ]]></content>
       <categories>
         <category>study</category>
